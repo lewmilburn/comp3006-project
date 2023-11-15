@@ -1,9 +1,9 @@
-// Import Express, use it to initialise the application, and
-// determine which port to use.
 let express = require("express");
 let path = require("path");
 let app = express();
 let port = 80;
+
+app.disable("x-powered-by"); // security risk
 app.get("/hello", function(request, response) {
     response.send("Hello World");
 });
