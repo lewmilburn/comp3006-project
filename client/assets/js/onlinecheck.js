@@ -29,7 +29,7 @@ function clientConnected() {
             function()
             {
                 $("#connectionScreen").css("display", "none");
-            }, 5000);
+            }, 2000);
     }
 }
 

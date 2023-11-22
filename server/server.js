@@ -35,7 +35,7 @@ webSocketServer.listen(webSocketPort, () => {
 });
 
 server.get("/status", function(request, response) {
-    response.send("200");
+    response.send('{"status":200}');
 });
 
 server.set("views", path.join(__dirname, "/views"));
