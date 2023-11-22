@@ -1,6 +1,6 @@
 $(function () {
     let i = 0;
-    const socket = io('ws://localhost:8081', {
+    const socket = io('ws://localhost:6436', {
         reconnectionDelay: 1000,
         reconnection: true,
         reconnectionAttempts: 9,

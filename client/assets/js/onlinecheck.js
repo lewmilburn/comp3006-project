@@ -1,9 +1,9 @@
 let connections = 0;
 
 function checkOnline() {
-    let request = $.get('http://localhost:8080');
+    let request = $.get('http://localhost:8080/status');
 
-    serverStatus('Attempting to connect...');
+    serverStatus('Checking...');
 
     request.done(function(result) {
         serverStatus('Online.');

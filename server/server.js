@@ -1,5 +1,5 @@
 let serverPort = 8080;
-let webSocketPort = 8081;
+let webSocketPort = 6436;
 
 let express = require("express");
 let path = require("path");
@@ -41,10 +41,6 @@ server.get("/status", function(request, response) {
 server.set("views", path.join(__dirname, "/views"));
 server.set("view engine", "ejs");
 server.engine('ejs', require('ejs').__express);
-
-server.get("/", function(request, response) {
-    response.send('{"status":200}');
-});
 
 server.listen(serverPort, function() {
     console.log("Listening on " + serverPort);

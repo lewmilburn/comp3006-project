@@ -12,5 +12,5 @@ services:
       - ./server:/usr/src/server
     ports:
       - "8080:8080"
-      - "8081:8081"
+      - "6436:6436"
     command: sh -c "/usr/src/server/startup.sh"

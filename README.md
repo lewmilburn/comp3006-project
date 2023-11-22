@@ -12,4 +12,4 @@ On macOS/Linux systems you can run up.sh, on Windows systems type the following 
 |------|------------------------------|
 | 80   | Client-side website          |
 | 8080 | Server main port             |
-| 8081 | Websocket communication port |
+| 6436 | Websocket communication port |
