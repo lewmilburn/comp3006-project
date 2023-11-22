@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Homepage</title>
+        <link rel="stylesheet" type="text/css" href="/css/client.css">
+    </head>
+    <body>
+        <div id="connectionScreen" class="bg-red-100 bg-green-100 absolute bottom-0 left-0 right-0" style="display: block">
+            <div class="flex p-2">
+                <h1 class="font-bold text-lg self-center" id="serviceStatus">Connecting...</h1>
+                <div class="flex-grow"></div>
+                <div class="self-center">
+                    <p class="text-right">
+                        Server status: <span id="statusServer">Connecting...</span>
+                    </p>
+                    <p class="text-right">
+                        Communications status: <span id="statusWebsocket">Connecting...</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p>It's working!</p>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+        <script src="/js/websocket.js"></script>
+        <script src="/js/onlinecheck.js"></script>
+        <script>checkOnline();</script>
+    </body>
+</html>

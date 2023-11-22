@@ -1,8 +1,16 @@
 services:
-  web:
+  client:
     image: node:18
     volumes:
-      - ./app:/usr/src/app
+      - ./client:/usr/src/client
     ports:
       - "80:80"
-    command: sh -c "/usr/src/app/startup.sh"
+    command: sh -c "/usr/src/client/startup.sh"
+  server:
+    image: node:18
+    volumes:
+      - ./server:/usr/src/server
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    command: sh -c "/usr/src/server/startup.sh"
