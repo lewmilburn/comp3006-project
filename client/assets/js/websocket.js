@@ -11,6 +11,7 @@ $(function () {
     });
 
     socket.on("confirm connection", function (msg) {
+        i = 0;
         console.log(msg);
         websocketStatus('Connected');
         clientConnected();
