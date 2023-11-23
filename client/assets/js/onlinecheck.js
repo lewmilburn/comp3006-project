@@ -22,7 +22,7 @@ function clientOffline() {
 
 function clientConnected() {
     connections++;
-    if (connections === 2) {
+    if (connections >= 2) {
         $("#connectionScreen").removeClass("bg-red-100");
         document.getElementById('serviceStatus').innerHTML = 'Connected.';
         setTimeout(
@@ -30,6 +30,14 @@ function clientConnected() {
             {
                 $("#connectionScreen").css("display", "none");
             }, 2000);
+    }
+}
+
+function clientDisconnectedMidRun() {
+    if (!$("#connectionScreen").hasClass("bg-red-100")) {
+        console.log("does not have class");
+        $("#connectionScreen").css("display", "block");
+        $("#connectionScreen").addClass("bg-red-100");
     }
 }
 

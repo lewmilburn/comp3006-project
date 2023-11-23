@@ -15,9 +15,6 @@ $(function () {
         websocketStatus('Connected');
         clientConnected();
     });
-    socket.on("response", function (msg) {
-        console.log(msg);
-    });
     socket.on("send message", function (msg) {
         console.log(msg);
     });
@@ -28,6 +25,9 @@ $(function () {
         }
     });
     socket.on("connect_error", function (err) {
+        if (connections >= 2) {
+            clientDisconnectedMidRun();
+        }
         console.log("[WS] Can't connect '"+err+"'");
         i++;
         websocketStatus("Can't connect, retrying (attempt "+(i)+"/10)...");
