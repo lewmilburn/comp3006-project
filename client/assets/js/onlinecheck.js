@@ -34,10 +34,12 @@ function clientConnected() {
 }
 
 function clientDisconnectedMidRun() {
-    if (!$("#connectionScreen").hasClass("bg-red-100")) {
+    let selector = $("#connectionScreen");
+    if (!selector.hasClass("bg-red-100")) {
         console.log("does not have class");
-        $("#connectionScreen").css("display", "block");
-        $("#connectionScreen").addClass("bg-red-100");
+        document.getElementById('serviceStatus').innerHTML = 'Disconnected.';
+        selector.css("display", "block");
+        selector.addClass("bg-red-100");
     }
 }
 
