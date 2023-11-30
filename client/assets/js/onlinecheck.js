@@ -7,7 +7,6 @@ function checkOnline() {
 
     request.done(function(result) {
         serverStatus('Online.');
-        console.log(result);
         clientConnected();
     });
 
@@ -36,7 +35,6 @@ function clientConnected() {
 function clientDisconnectedMidRun() {
     let selector = $("#connectionScreen");
     if (!selector.hasClass("bg-red-100")) {
-        console.log("does not have class");
         document.getElementById('serviceStatus').innerHTML = 'Disconnected.';
         selector.css("display", "block");
         selector.addClass("bg-red-100");
