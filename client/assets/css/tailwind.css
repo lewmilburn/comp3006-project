@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
-    @apply px-2 py-1 transition duration-200 rounded-md
-}
-.btn-red {
-    @apply btn bg-red-600 hover:bg-red-500 text-white
-}
+/* Text */
+h1, .text-size-3xl { @apply lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold }
+h2, .text-size-2xl { @apply lg:text-4xl md:text-3xl sm:text-2xl text-xl font-bold }
+h3, .text-size-xl { @apply lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold }
+h4, h5, h6, .text-size-lg { @apply lg:text-2xl md:text-xl sm:text-lg font-bold }
+/* Padding */
+main, .p-std { @apply lg:py-12 lg:px-24 md:py-8 md:px-16 sm:py-6 sm:px-8 py-4 px-2 }
+
+/* Cards */
+.card-content { @apply p-2 }
+.card-neutral { @apply bg-neutral-100 }
+.card-image { @apply bg-center bg-cover h-40 }
+
+/* Buttons */
+.btn { @apply px-2 py-1 transition duration-200 rounded-md }
+.btn-red { @apply btn bg-red-600 hover:bg-red-500 text-white }

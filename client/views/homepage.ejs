@@ -7,9 +7,18 @@
     <body>
         <%- include('common/nav.ejs'); -%>
 
-        <p>It's working!</p>
+        <header class="bg-blue-500 text-white p-std">
+            <h1>Find your overnight dream</h1>
+            <p class="text-size-xl">Search rooms at Hotel Plymouth</p>
+        </header>
+
+        <main>
+            <div id="roomList" class="grid grid-cols-4 gap-4">
+            </div>
+        </main>
 
         <%- include('common/scripts.ejs'); -%>
         <script src="/js/rooms.js"></script>
+        <script>requestAll();</script>
     </body>
 </html>
