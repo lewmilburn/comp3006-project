@@ -1,7 +1,6 @@
 let serverPort = 8080;
 let webSocketPort = 6436;
 const dotenv = require("dotenv");
-const {resolve} = require("path");
 
 console.log("[STARTUP][1/5] Loading configuration...");
 dotenv.config();
