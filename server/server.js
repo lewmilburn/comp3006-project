@@ -7,7 +7,7 @@ dotenv.config();
 
 // Start API
 console.log("[STARTUP][2/4] Starting API...");
-require('./startup/api.js')(serverPort);
+let server = require('./startup/api.js')(serverPort);
 // Start WebSocket
 console.log("[STARTUP][3/4] Starting WebSocket...");
 require('./startup/socket.js')(webSocketPort);
@@ -15,3 +15,8 @@ require('./startup/socket.js')(webSocketPort);
 console.log("[STARTUP][4/4] Starting Database...");
 require ('./startup/database.js')(process.env.DB_CONN_STRING);
 console.log("[STARTUP] Done");
+
+// Routing
+require('./api/status.js')(server);
+require('./api/rooms.js')(server);
+require('./api/bookings.js')(server);
