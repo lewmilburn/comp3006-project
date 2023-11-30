@@ -1,0 +1,17 @@
+<div id="connectionScreen" class="bg-red-100 bg-green-100 absolute bottom-0 left-0 right-0" style="display: block">
+    <div class="flex p-2">
+        <h1 class="font-bold text-lg self-center" id="serviceStatus">Connecting...</h1>
+        <div class="flex-grow"></div>
+        <div class="self-center">
+            <p class="text-right">
+                Server status: <span id="statusServer">Connecting...</span>
+            </p>
+            <p class="text-right">
+                Communications status: <span id="statusWebsocket">Connecting...</span>
+            </p>
+        </div>
+    </div>
+</div>
+<script src="/js/websocket.js"></script>
+<script src="/js/onlinecheck.js"></script>
+<script>checkOnline();</script>
