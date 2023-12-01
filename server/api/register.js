@@ -1,5 +1,4 @@
 const {genSalt, hash} = require('bcryptjs');
-const {ObjectId} = require("mongodb");
 module.exports = function (server, database) {
     server.post("/api/register", function(request, response) {
         let email = request.body.email;
