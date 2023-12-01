@@ -11,7 +11,6 @@ module.exports = function (server, database) {
 
         hashPassword(password).then(hashedPassword => {
             registerUser(database, email, hashedPassword, name).then(r => {
-                console.log(r);
                 if (r) {
                     console.log('[API][S201] /api/register');
                     response.status(201).send('Created');
