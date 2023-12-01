@@ -14,14 +14,18 @@
 
         <main>
             <form class="text-center grid max-w-sm mx-auto gap-2">
-                <label for="username">Username or email address</label>
-                <input type="text" id="username">
+                <label for="email">Email address</label>
+                <input type="text" id="email">
                 <div></div>
                 <label for="password">Password</label>
                 <input type="password" id="password">
+                <div></div>
+                <button type="button" onclick="login();" class="btn-neutral">Login</button>
             </form>
+            <p class="text-sm text-center">Not got an account? <a href="/register" class="link-inline">Join Hotel Plymouth</a>.</p>
         </main>
 
         <%- include('common/scripts.ejs'); -%>
+        <script src="/js/auth.js"></script>
     </body>
 </html>

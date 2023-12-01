@@ -3,10 +3,10 @@ module.exports = function (server, database) {
     server.get("/api/room", function(request, response) {
         getAllRooms(database, request.query.id).then(r => {
             if (r === null) {
-                console.log('[API][S404] /api/room')
+                console.log('[API][404] /api/room')
                 response.status(404).send('Not found');
             } else {
-                console.log('[API][S200] /api/room')
+                console.log('[API][200] /api/room')
                 response.setHeader('Content-Type', 'application/json');
                 response.send(r);
             }

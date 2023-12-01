@@ -12,7 +12,26 @@ function register() {
             window.location = '/login';
         })
         .fail(function() {
-            alert('Unable to sign up, please refresh the page and try again.');
+            alert('Unable to sign up, this account may already exist.');
+        })
+        .always(function() {
+            $('#email').val('');
+            $('#password').val('');
+        });
+}
+
+function login() {
+    let email = $('#email').val().trim();
+    let pass = $('#password').val().trim();
+    let url = location.protocol + '//' + location.host + ':8080/api/login';
+    console.log(url);
+
+    $.post(url, { email: email, password: pass, name: name })
+        .done(function() {
+            window.location = '/';
+        })
+        .fail(function() {
+            alert('Unable to login, please check your username and password and try again.');
         })
         .always(function() {
             $('#email').val('');

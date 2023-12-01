@@ -11,10 +11,10 @@ module.exports = function (server, database) {
         hashPassword(password).then(hashedPassword => {
             registerUser(database, email, hashedPassword, name).then(r => {
                 if (r) {
-                    console.log('[API][S201] /api/register');
+                    console.log('[API][201] /api/register');
                     response.status(201).send('Created');
                 } else {
-                    console.log('[API][S409] /api/register');
+                    console.log('[API][409] /api/register');
                     response.status(409).send('Conflict');
                 }
             });
@@ -41,7 +41,7 @@ async function registerUser(client, email, password, name) {
         const query = { 'email': email };
         const options = {};
 
-        const cursor = users.find(query, options);
+        users.find(query, options);
         if ((await users.countDocuments(query)) === 0) {
             await users.insertOne(
                 {
