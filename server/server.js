@@ -19,5 +19,6 @@ let database = require ('./startup/database.js')(process.env.DB_CONN_STRING);
 console.log("[STARTUP][5/5] Starting Router...");
 require('./api/status.js')(server);
 require('./api/rooms.js')(server, database);
+require('./api/room.js')(server, database);
 require('./api/bookings.js')(server);
 console.log("[STARTUP] Done");

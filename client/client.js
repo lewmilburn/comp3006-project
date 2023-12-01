@@ -17,6 +17,12 @@ client.use(express.static('assets'))
 client.get("/", function(request, response) {
     response.render("homepage");
 });
+client.get("/login", function(request, response) {
+    response.render("login");
+});
+client.get("/register", function(request, response) {
+    response.render("register");
+});
 client.get("/offline", function(request, response) {
     response.render("offline");
 });

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login - Hotel Plymouth</title>
+        <%- include('common/head.ejs'); -%>
+    </head>
+    <body>
+        <%- include('common/nav.ejs'); -%>
+
+        <header class="bg-blue-500 text-white p-std">
+            <h1>Welcome back.</h1>
+            <p class="text-size-xl">It's great to see you again.</p>
+        </header>
+
+        <main>
+            <form class="text-center grid max-w-sm mx-auto gap-2">
+                <label for="username">Username or email address</label>
+                <input type="text" id="username">
+                <div></div>
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </form>
+        </main>
+
+        <%- include('common/scripts.ejs'); -%>
+    </body>
+</html>
