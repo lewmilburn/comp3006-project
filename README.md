@@ -1,4 +1,4 @@
-# comp3006-project
+# Hotel App
 > USE MORE THAN 1 CONTAINER - BACKEND, FRONTEND, DATABASE
 
 # Running the System
