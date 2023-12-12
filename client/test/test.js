@@ -19,15 +19,19 @@ describe('Tests', () => {
                });
        });
        it('Should not send x-powered-by header', () => {
-           chai.request(baseURL)
-               .get('/')
-               .end((err, res) => {
-                   if (err) {
-                       chai.assert.fail(0, 1, err);
-                   } else {
-                       chai.assert.equal(res.headers['x-powered-by'], undefined, "Server sending x-powered-by");
-                   }
-               });
+           try {
+               chai.request(baseURL)
+                   .get('/')
+                   .end((err, res) => {
+                       if (err) {
+                           chai.assert.fail(0, 1, err);
+                       } else {
+                           chai.assert.equal(res.headers['x-powered-by'], undefined, "Server sending x-powered-by");
+                       }
+                   });
+            } catch (AssertionError e) {
+                chai.assert.fail(0, 1, e);
+            }
        });
     });
 });
