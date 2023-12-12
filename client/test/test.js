@@ -2,7 +2,6 @@ let baseURL = `http://localhost:80`;
 
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-const {equal} = require("assert");
 
 chai.use(chaiHttp)
 
@@ -13,9 +12,9 @@ describe('Tests', () => {
                .get('/')
                .end((err, res) => {
                    if (err) {
-                       assert.fail(0, 1, err);
+                       chai.assert.fail(0, 1, err);
                    } else {
-                       equal(res.statusCode === 200, true, "Server does not have status 200");
+                       chai.assert.equal(res.statusCode === 200, true, "Server does not have status 200");
                    }
                });
        });
@@ -24,9 +23,9 @@ describe('Tests', () => {
                .get('/')
                .end((err, res) => {
                    if (err) {
-                       assert.fail(0, 1, err);
+                       chai.assert.fail(0, 1, err);
                    } else {
-                       equal(res.headers['x-powered-by'], undefined, "Server sending x-powered-by");
+                       chai.assert.equal(res.headers['x-powered-by'], undefined, "Server sending x-powered-by");
                    }
                });
        });
