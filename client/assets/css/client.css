@@ -695,6 +695,10 @@ video {
   clear: none;
 }
 
+.m-48 {
+  margin: 12rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -810,6 +814,10 @@ video {
 
 .hidden {
   display: none;
+}
+
+.h-1 {
+  height: 0.25rem;
 }
 
 .w-20 {
@@ -1910,6 +1918,10 @@ video {
      object-fit: scale-down;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -2664,6 +2676,19 @@ main, .p-std {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+}
+
+.ph {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.ph-b {
+  padding-bottom: 1rem;
+}
+
+.ph-t {
+  padding-top: 1rem;
 }
 
 /* Cards */

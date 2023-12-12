@@ -1,7 +1,7 @@
 const {ObjectId} = require("mongodb");
 module.exports = function (server, database) {
     server.get("/api/room", function(request, response) {
-        getAllRooms(database, request.query.id).then(r => {
+        getAllRooms(database, request.query.roomNumber).then(r => {
             if (r === null) {
                 console.log('[API][404] /api/room')
                 response.status(404).send('Not found');
@@ -14,13 +14,13 @@ module.exports = function (server, database) {
     });
 }
 
-async function getAllRooms(client, roomID) {
+async function getAllRooms(client, roomNumber) {
     try {
         await client.connect();
         const database = client.db("COMP3006Hotel");
         const rooms = database.collection("rooms");
 
-        const query = { '_id': new ObjectId(roomID)};
+        const query = { 'room_number': roomNumber};
         const options = {};
 
         const cursor = rooms.find(query, options);

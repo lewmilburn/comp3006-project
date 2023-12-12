@@ -1,13 +1,15 @@
 services:
   client:
-    image: node:18
+    image: node:20
+    restart: unless-stopped
     volumes:
       - ./client:/usr/src/client
     ports:
       - "80:80"
     command: sh -c "/usr/src/client/startup.sh"
   server:
-    image: node:18
+    image: node:20
+    restart: unless-stopped
     volumes:
       - ./server:/usr/src/server
     ports:

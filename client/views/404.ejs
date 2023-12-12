@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>404 - Hotel Plymouth</title>
+        <%- include('common/head.ejs'); -%>
+    </head>
+    <body>
+        <%- include('common/nav.ejs'); -%>
+
+        <header class="bg-blue-500 text-white p-std">
+            <h1>Error 404.</h1>
+            <p class="text-size-xl">Page not found.</p>
+        </header>
+
+        <main>
+            <p>
+                The page or resource you were looking for could not be found.
+                Please check the URL and try again.
+            </p>
+        </main>
+
+        <%- include('common/scripts.ejs'); -%>
+        <script src="/js/auth.js"></script>
+    </body>
+</html>
