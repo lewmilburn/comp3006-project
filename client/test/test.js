@@ -12,16 +12,22 @@ describe('Tests', () => {
            chai.request(baseURL)
                .get('/')
                .end((err, res) => {
-                   if (err) { done(err); }
-                   equal(res.statusCode === 200,true,"Server does not have status 200");
+                   if (err) {
+                       assert.fail(0, 1, err);
+                   } else {
+                       equal(res.statusCode === 200, true, "Server does not have status 200");
+                   }
                });
        });
        it('Should not send x-powered-by header', () => {
            chai.request(baseURL)
                .get('/')
                .end((err, res) => {
-                   if (err) { done(err); }
-                   equal(res.headers['x-powered-by'],undefined,"Server sending x-powered-by");
+                   if (err) {
+                       assert.fail(0, 1, err);
+                   } else {
+                       equal(res.headers['x-powered-by'], undefined, "Server sending x-powered-by");
+                   }
                });
        });
     });
