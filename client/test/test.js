@@ -12,7 +12,7 @@ describe('Tests', () => {
            chai.request(baseURL)
                .get('/')
                .end((err, res) => {
-		   if (err) done(err);
+                   if (err) { done(err); }
                    equal(res.statusCode === 200,true,"Server does not have status 200");
                });
        });
@@ -20,7 +20,7 @@ describe('Tests', () => {
            chai.request(baseURL)
                .get('/')
                .end((err, res) => {
-		   if (err) done(err);
+                   if (err) { done(err); }
                    equal(res.headers['x-powered-by'],undefined,"Server sending x-powered-by");
                });
        });
