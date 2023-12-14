@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Account - Hotel Plymouth</title>
+        <%- include('common/head.ejs'); -%>
+    </head>
+    <body>
+        <%- include('common/nav.ejs'); -%>
+
+        <header class="bg-blue-500 text-white p-std">
+            <h1>Your account.</h1>
+            <p class="text-size-xl">Logged in as <span id="name"></span></p>
+        </header>
+
+        <main>
+            <h2 class="ph-b">Account details</h2>
+            <p>Email: <span id="email"></span></p>
+            <p>User ID: <span id="id"></span></p>
+        </main>
+
+        <%- include('common/scripts.ejs'); -%>
+        <script src="/js/account.js"></script>
+        <script>
+            let url = window.location.href.replace(/\/$/, '');
+            let roomNumber = url.substr(url.lastIndexOf('/') + 1);
+            requestRoomData(roomNumber);
+        </script>
+    </body>
+</html>

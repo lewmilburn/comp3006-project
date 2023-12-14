@@ -1,41 +1,16 @@
 let express = require("express");
-let path = require("path");
 let client = express();
 let port = 80;
 
-client.disable("x-powered-by"); // security risk
-client.get("/hello", function(request, response) {
-    response.send("Hello World");
-});
 
-client.set("views", path.join(__dirname, "/views"));
-client.set("view engine", "ejs");
-client.engine('ejs', require('ejs').__express);
 
-client.use(express.static('assets'))
+console.log("[STARTUP][1/3] Setting up...");
+require('./startup/setup.js')(client);
 
-client.get("/", function(request, response) {
-    response.render("homepage");
-});
-client.get("/room/*", function(request, response) {
-    response.render("room");
-});
-client.get("/room", function(request, response) {
-    response.render("homepage");
-});
-client.get("/login", function(request, response) {
-    response.render("login");
-});
-client.get("/register", function(request, response) {
-    response.render("register");
-});
-client.get("/offline", function(request, response) {
-    response.render("offline");
-});
-client.get("/404", function(request, response) {
-    response.render("404");
-});
+console.log("[STARTUP][2/3] Starting Router...");
+require('./startup/router.js')(client);
 
 client.listen(port, function() {
-    console.log("Listening on " + port);
+    console.log("[STARTUP][3/3] Listening on port " + port);
+    console.log("[STARTUP] Done");
 });
