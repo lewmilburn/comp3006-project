@@ -1,3 +1,3 @@
-cd /usr/src/client
+cd usr/src/client
 npm install
 node client.js
