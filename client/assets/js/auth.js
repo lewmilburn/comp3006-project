@@ -32,6 +32,7 @@ function login() {
             $('#password').val('');
         })
         .done(function(result) {
+            console.log(result);
             localStorage.setItem('id',result.id);
             localStorage.setItem('email',result.email);
             localStorage.setItem('name',result.name);

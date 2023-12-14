@@ -54,7 +54,8 @@ async function doRegister(client, email, password, name, token) {
                     email: email,
                     password: password,
                     name: name,
-                    token: token
+                    token: token,
+                    permissions: 0
                 }
             )
             return true;
