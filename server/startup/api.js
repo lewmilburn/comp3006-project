@@ -1,10 +1,12 @@
 const path = require("path");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const { urlencoded, json} = require("body-parser");
 let express = require("express");
 let server = express();
 module.exports = function(serverPort) {
     server.use(cors());
+    server.use(cookieParser())
 
     server.use(urlencoded({
         extended: false

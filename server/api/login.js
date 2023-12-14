@@ -6,11 +6,11 @@ module.exports = function (server, database) {
 
         email = require('../functions/escape.js')(email)
 
-        getPassword(database, email).then(r => {
-            bcryptjs.compare(password, r, function (err, result) {
+        getPassword(database, email).then(user => {
+            bcryptjs.compare(password, user.password, function (err, result) {
                 if (result) {
                     console.log('[API][201] /api/login');
-                    response.status(200).send('Success');
+                    response.send(JSON.parse('{"id":"'+user._id+'","email":"'+user.email+'","name":"'+user.name+'","token":"'+user.token+'"}'));
                 } else {
                     console.log('[API][401] /api/login');
                     response.status(401).send('Unauthorised');
@@ -39,7 +39,7 @@ async function getPassword(client, email) {
                 arr[i] = doc;
                 i++;
             }
-            return arr[0].password;
+            return arr[0];
         }
     } finally {
         await client.close();

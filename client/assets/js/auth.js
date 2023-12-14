@@ -8,15 +8,15 @@ function register() {
     console.log(url);
 
     $.post(url, { email: email, password: pass, name: name })
+        .always(function() {
+            $('#email').val('');
+            $('#password').val('');
+        })
         .done(function() {
             window.location = '/login';
         })
         .fail(function() {
             alert('Unable to sign up, this account may already exist.');
-        })
-        .always(function() {
-            $('#email').val('');
-            $('#password').val('');
         });
 }
 
@@ -27,14 +27,18 @@ function login() {
     console.log(url);
 
     $.post(url, { email: email, password: pass, name: name })
-        .done(function() {
+        .always(function() {
+            $('#email').val('');
+            $('#password').val('');
+        })
+        .done(function(result) {
+            localStorage.setItem('id',result.id);
+            localStorage.setItem('email',result.email);
+            localStorage.setItem('name',result.name);
+            localStorage.setItem('token',result.token);
             window.location = '/';
         })
         .fail(function() {
             alert('Unable to login, please check your username and password and try again.');
-        })
-        .always(function() {
-            $('#email').val('');
-            $('#password').val('');
         });
 }

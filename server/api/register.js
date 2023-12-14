@@ -33,12 +33,18 @@ async function hashPassword(password) {
 }
 
 async function registerUser(client, email, password, name) {
+    return hashPassword(name).then(token => {
+        return doRegister(client, email, password, name, token);
+    });
+}
+
+async function doRegister(client, email, password, name, token) {
     try {
         await client.connect();
         const database = client.db("COMP3006Hotel");
         const users = database.collection("users");
 
-        const query = { 'email': email };
+        const query = {'email': email};
         const options = {};
 
         users.find(query, options);
@@ -47,7 +53,8 @@ async function registerUser(client, email, password, name) {
                 {
                     email: email,
                     password: password,
-                    name: name
+                    name: name,
+                    token: token
                 }
             )
             return true;
