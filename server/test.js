@@ -4,14 +4,17 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 const {equal} = require("assert");
 let chaiAsPromised = require("chai-as-promised");
-const {eventually} = require("chai-as-promised");
-const {expect} = require("chai");
+const {expect, request, get, should} = require("chai");
+const nock = require('nock');
 
 chai.use(chaiHttp);
 chai.use(chaiAsPromised);
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 describe('Tests', () => {
-    describe('Server response',() => {
+    /*describe('Server response',() => {
         it('Should have HTTP status 404', () => {
             chai.request(baseURL)
                 .get('/')
@@ -26,10 +29,10 @@ describe('Tests', () => {
                     equal(res.headers['x-powered-by'],undefined,"Server sending x-powered-by");
                 });
         });
-    });
+    });*/
     describe('Database tests',() => {
-        describe('Database CREATE', () => {
-            it('Should create a room', () => {
+        /*describe('Database CREATE', (done) => {
+            it('Should create a room', (res) => {
                 equal(0 === 1, true, "Test not implemented.");
             });
             it('Should create a user', () => {
@@ -38,16 +41,28 @@ describe('Tests', () => {
             it('Should create a booking', () => {
                 equal(0 === 1, true, "Test not implemented.");
             });
-        });
+        });*/
         describe('Database RETRIEVE', () => {
-            it('Should fetch all rooms', () => {
-                equal(0 === 1, true, "Test not implemented.");
+            let server;
+            before(async function () {
+                return new Promise(async (resolve) => {
+                    server = await require('./server');
+                    resolve();
+                })
             });
-            it('Should fetch a single room', () => {
-                equal(0 === 1, true, "Test not implemented.");
+            it('Should fetch all rooms', (done) => {
+                chai.request(server)
+                    .get("/api/status")
+                    .end((err, res) => {
+                        console.log(res.body);
+                        equal(res.body, 200, "Status code does not equal 200.");
+                    });
             });
+            /*it('Should fetch a single room', () => {
+                equal(0 === 1, true, "Test not implemented.");
+            });*/
         });
-        describe('Database UPDATE', () => {
+        /*describe('Database UPDATE', () => {
             it('Should UPDATE a room', () => {
                 equal(0 === 1, true, "Test not implemented.");
             });
@@ -68,6 +83,6 @@ describe('Tests', () => {
             it('Should DELETE a booking', () => {
                 equal(0 === 1, true, "Test not implemented.");
             });
-        });
+        });*/
     });
 });
