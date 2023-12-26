@@ -16,14 +16,11 @@
             <h2 class="ph-b">Account details</h2>
             <p>Email: <span id="email"></span></p>
             <p>User ID: <span id="id"></span></p>
+            <p><button class="btn-red" onclick="deleteAccount();">Delete my account</button></p>
         </main>
 
         <%- include('common/scripts.ejs'); -%>
+        <script src="/js/auth.js"></script>
         <script src="/js/account.js"></script>
-        <script>
-            let url = window.location.href.replace(/\/$/, '');
-            let roomNumber = url.substr(url.lastIndexOf('/') + 1);
-            requestRoomData(roomNumber);
-        </script>
     </body>
 </html>

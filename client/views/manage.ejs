@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Manage - Hotel Plymouth</title>
+        <%- include('common/head.ejs'); -%>
+    </head>
+    <body>
+        <%- include('common/nav.ejs'); -%>
+
+        <header class="bg-blue-500 text-white p-std">
+            <h1>Manage</h1>
+            <p class="text-size-xl">Please select an option.</p>
+        </header>
+
+        <main>
+            <h2 class="ph-b">About this room</h2>
+            <p id="description"></p>
+            <h2 class="ph">Price</h2>
+            <p>This room is £<span id="price"></span> per night and can fit <span id="max_guests"></span>.</p>
+        </main>
+
+        <%- include('common/scripts.ejs'); -%>
+        <script src="/js/room.js"></script>
+        <script>
+            let url = window.location.href.replace(/\/$/, '');
+            let roomNumber = url.substr(url.lastIndexOf('/') + 1);
+            requestRoomData(roomNumber);
+        </script>
+    </body>
+</html>

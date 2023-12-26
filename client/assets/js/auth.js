@@ -5,7 +5,6 @@ function register() {
     let lastname = $('#lastname').val().trim();
     let name = firstname + ' ' + lastname;
     let url = location.protocol + '//' + location.host + ':8080/api/register';
-    console.log(url);
 
     $.post(url, { email: email, password: pass, name: name })
         .always(function() {
@@ -24,7 +23,6 @@ function login() {
     let email = $('#email').val().trim();
     let pass = $('#password').val().trim();
     let url = location.protocol + '//' + location.host + ':8080/api/login';
-    console.log(url);
 
     $.post(url, { email: email, password: pass, name: name })
         .always(function() {
@@ -41,5 +39,25 @@ function login() {
         })
         .fail(function() {
             alert('Unable to login, please check your username and password and try again.');
+        });
+}
+
+function deleteAccount() {
+    let id = localStorage.getItem('id');
+    let token = localStorage.getItem('token');
+    if (id === null && token === null) {
+        console.log('[ERROR] ID and Token is null.');
+        return;
+    }
+    let url = location.protocol + '//' + location.host + ':8080/api/deleteuser';
+
+    $.post(url, { id: id, token: token })
+        .done(function(result) {
+            console.log(result);
+            localStorage.clear();
+            window.location = '/';
+        })
+        .fail(function() {
+            alert('Unable to delete account, please try again later.');
         });
 }
