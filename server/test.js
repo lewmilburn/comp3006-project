@@ -12,29 +12,23 @@ dotenv.config();
 describe('Tests', () => {
     describe('Security tests',() => {
         it('Should escape quotations', () => {
-            let bad = 'Test! "';
-            let good = require('./functions/escape.js')(bad)
-            equal(good,'Test! &quot;',"Not escaping quotations");
+            equal(escapeTest('Test! "'),'Test! &quot;',"Not escaping quotations");
         });
         it('Should escape less than symbol', () => {
-            let bad = 'Test! <';
-            let good = require('./functions/escape.js')(bad)
-            equal(good,'Test! &lt;',"Not escaping quotations");
+            equal(escapeTest('Test! <'),'Test! &lt;',"Not escaping quotations");
         });
         it('Should escape greater than symbol', () => {
-            let bad = 'Test! >';
-            let good = require('./functions/escape.js')(bad)
-            equal(good,'Test! &gt;',"Not escaping quotations");
+            equal(escapeTest('Test! >'),'Test! &gt;',"Not escaping quotations");
         });
         it('Should escape apostrophe symbol', () => {
-            let bad = "Test! '";
-            let good = require('./functions/escape.js')(bad)
-            equal(good,'Test! &#x27;',"Not escaping quotations");
+            equal(escapeTest("Test! '"),'Test! &#x27;',"Not escaping quotations");
         });
         it('Should escape slash symbol', () => {
-            let bad = "Test! /";
-            let good = require('./functions/escape.js')(bad)
-            equal(good,'Test! &#x2F;',"Not escaping quotations");
+            equal(escapeTest("Test! /"),'Test! &#x2F;',"Not escaping quotations");
         });
     });
 });
+
+function escapeTest(bad) {
+    return require('./functions/escape.js')(bad);
+}
