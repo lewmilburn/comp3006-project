@@ -8,7 +8,7 @@ module.exports = async function(client, id, token) {
         console.log(query);
         const options = {};
 
-         users.deleteOne(query, options);
+        users.deleteOne(query, options);
         return (await users.countDocuments(query)) !== 0;
     } finally {
         await client.close();
