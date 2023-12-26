@@ -1,11 +1,7 @@
-let baseURL = `http://localhost:8080`;
-
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 const {equal} = require("assert");
 let chaiAsPromised = require("chai-as-promised");
-const {expect, request, get, should} = require("chai");
-const nock = require('nock');
 
 chai.use(chaiHttp);
 chai.use(chaiAsPromised);
@@ -14,75 +10,31 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 describe('Tests', () => {
-    /*describe('Server response',() => {
-        it('Should have HTTP status 404', () => {
-            chai.request(baseURL)
-                .get('/')
-                .end((err, res) => {
-                    equal(res.statusCode === 404,true,"Server does not have status 404");
-                });
+    describe('Security tests',() => {
+        it('Should escape quotations', () => {
+            let bad = 'Test! "';
+            let good = require('./functions/escape.js')(bad)
+            equal(good,'Test! &quot;',"Not escaping quotations");
         });
-        it('Should not send x-powered-by header', () => {
-            chai.request(baseURL)
-                .get('/')
-                .end((err, res) => {
-                    equal(res.headers['x-powered-by'],undefined,"Server sending x-powered-by");
-                });
+        it('Should escape less than symbol', () => {
+            let bad = 'Test! <';
+            let good = require('./functions/escape.js')(bad)
+            equal(good,'Test! &lt;',"Not escaping quotations");
         });
-    });*/
-    describe('Database tests',() => {
-        /*describe('Database CREATE', (done) => {
-            it('Should create a room', (res) => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-            it('Should create a user', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-            it('Should create a booking', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-        });*/
-        describe('Database RETRIEVE', () => {
-            let server;
-            before(async function () {
-                return new Promise(async (resolve) => {
-                    server = await require('./server');
-                    resolve();
-                })
-            });
-            it('Should fetch all rooms', (done) => {
-                chai.request(server)
-                    .get("/api/status")
-                    .end((err, res) => {
-                        console.log(res.body);
-                        equal(res.body, 200, "Status code does not equal 200.");
-                    });
-            });
-            /*it('Should fetch a single room', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });*/
+        it('Should escape greater than symbol', () => {
+            let bad = 'Test! >';
+            let good = require('./functions/escape.js')(bad)
+            equal(good,'Test! &gt;',"Not escaping quotations");
         });
-        /*describe('Database UPDATE', () => {
-            it('Should UPDATE a room', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-            it('Should UPDATE a user', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-            it('Should UPDATE a booking', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
+        it('Should escape apostrophe symbol', () => {
+            let bad = "Test! '";
+            let good = require('./functions/escape.js')(bad)
+            equal(good,'Test! &#x27;',"Not escaping quotations");
         });
-        describe('Database DELETE', () => {
-            it('Should DELETE a room', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-            it('Should DELETE a user', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-            it('Should DELETE a booking', () => {
-                equal(0 === 1, true, "Test not implemented.");
-            });
-        });*/
+        it('Should escape slash symbol', () => {
+            let bad = "Test! /";
+            let good = require('./functions/escape.js')(bad)
+            equal(good,'Test! &#x2F;',"Not escaping quotations");
+        });
     });
 });
