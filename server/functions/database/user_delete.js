@@ -8,13 +8,8 @@ module.exports = async function(client, id, token) {
         console.log(query);
         const options = {};
 
-        const cursor = users.deleteOne(query, options);
-        if ((await users.countDocuments(query)) === 0) {
-            console.log('Not found.');
-            return false;
-        } else {
-            return true;
-        }
+         users.deleteOne(query, options);
+        return (await users.countDocuments(query)) !== 0;
     } finally {
         await client.close();
     }
