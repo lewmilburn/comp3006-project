@@ -2776,7 +2776,7 @@ main, .p-std {
 @media (prefers-color-scheme: dark) {
   .btn-neutral {
     --tw-bg-opacity: 1;
-    background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
@@ -2879,6 +2879,13 @@ input {
 
 .hover\:focus\:text-center:focus:hover {
   text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
 }
 
 @media (min-width: 640px) {
