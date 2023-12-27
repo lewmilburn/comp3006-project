@@ -6,6 +6,7 @@ module.exports = function (server, database) {
         let max_guests = request.body.max_guests;
         let price = request.body.price;
         let description = request.body.description;
+        let image = request.body.image;
 
         type = require('../functions/escape.js')(type)
         room_number = require('../functions/escape.js')(room_number)
@@ -14,7 +15,7 @@ module.exports = function (server, database) {
         price = require('../functions/escape.js')(price)
         description = require('../functions/escape.js')(description)
 
-        require('../functions/database/room_create')(database, type, room_number, floor_number, max_guests, price, description).then(r => {
+        require('../functions/database/room_create')(database, type, room_number, floor_number, max_guests, price, description, image).then(r => {
             if (r) {
                 console.log('[API][201] /api/room');
                 response.status(201).send('Created');

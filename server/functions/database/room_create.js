@@ -1,4 +1,4 @@
-module.exports = async function (client, type, room_number, floor, max_guests, price, description) {
+module.exports = async function (client, type, room_number, floor, max_guests, price, description, image) {
     try {
         await client.connect();
         const database = client.db("COMP3006Hotel");
@@ -16,7 +16,8 @@ module.exports = async function (client, type, room_number, floor, max_guests, p
                     floor: floor,
                     max_guests: max_guests,
                     price: price,
-                    description: description
+                    description: description,
+                    image: image
                 }
             )
             return true;
