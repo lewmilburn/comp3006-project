@@ -28,7 +28,18 @@
         <%- include('common/scripts.ejs'); -%>
         <!--<script src="/js/rooms.js"></script>-->
         <script src="/js/create_room.js"></script>
+        <script src="/js/rooms.js"></script>
         <script>
+            requestAll(false)
+                .then(data => {
+                    // Handle the data when the request is successful
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Handle errors
+                    console.error(error);
+                });
+
             function manageOption(option) {
                 if (option === 'newroom') {
                     if ($('#newroom').hasClass('hidden')) {

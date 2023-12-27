@@ -1,14 +1,27 @@
-function requestAll() {
-    let xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            displayAll(JSON.parse(xmlHttp.responseText));
-        }
-    };
-    let url = location.protocol + '//' + location.host + ':8080/api/rooms';
+function requestAll(display = true) {
+    return new Promise((success, error) => {
+        let xmlHttp = new XMLHttpRequest();
+        let url = location.protocol + '//' + location.host + ':8080/api/rooms';
 
-    xmlHttp.open("GET", url, true);
-    xmlHttp.send();
+        xmlHttp.open("GET", url, true);
+        xmlHttp.send();
+
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    const responseData = JSON.parse(xmlHttp.responseText);
+
+                    if (display) {
+                        displayAll(responseData);
+                    } else {
+                        success(responseData);
+                    }
+                } else {
+                    error(new Error(`Request failed with status: ${this.status}`));
+                }
+            }
+        };
+    });
 }
 
 function displayAll(rooms) {
