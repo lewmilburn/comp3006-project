@@ -18,12 +18,12 @@ let database = require ('./startup/database.js')(process.env.DB_CONN_STRING);
 // Routing
 console.log("[STARTUP][5/5] Starting Router...");
 require('./api/status.js')(server);
-require('./api/rooms.js')(server, database);
-require('./api/room.js')(server, database);
-require('./api/bookings.js')(server);
-require('./api/register.js')(server, database);
+require('./api/rooms_retrieve.js')(server, database);
+require('./api/room_retrieve.js')(server, database);
+require('./api/bookings_retrieve.js')(server);
+require('./api/user_create.js')(server, database);
 require('./api/login.js')(server, database);
-require('./api/deleteuser.js')(server, database);
+require('./api/user_delete.js')(server, database);
 console.log("[STARTUP] Done");
 
 module.exports = server;
