@@ -35,6 +35,7 @@ function login() {
             localStorage.setItem('email',result.email);
             localStorage.setItem('name',result.name);
             localStorage.setItem('token',result.token);
+            localStorage.setItem('role',result.role);
             window.location = '/';
         })
         .fail(function() {

@@ -2574,53 +2574,112 @@ nav {
   }
 }
 
-main, .p-std {
+main {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
 @media (min-width: 640px) {
-  main, .p-std {
+  main {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 
 @media (min-width: 768px) {
-  main, .p-std {
+  main {
     padding-left: 4rem;
     padding-right: 4rem;
   }
 }
 
 @media (min-width: 1024px) {
-  main, .p-std {
+  main {
     padding-left: 6rem;
     padding-right: 6rem;
   }
 }
 
-main, .p-std {
+main {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 @media (min-width: 640px) {
-  main, .p-std {
+  main {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
-  main, .p-std {
+  main {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
-  main, .p-std {
+  main {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  main {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+}
+
+.p-std {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .p-std {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .p-std {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-std {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+.p-std {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .p-std {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .p-std {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-std {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
@@ -2815,12 +2874,23 @@ main, .p-std {
 
 /* Forms */
 
-input {
+input, textarea {
   border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(115 115 115 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  input, textarea {
+    --tw-bg-opacity: 1;
+    background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+  }
 }
 
 @media (min-width: 640px) {

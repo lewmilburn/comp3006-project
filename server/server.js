@@ -20,9 +20,10 @@ console.log("[STARTUP][5/5] Starting Router...");
 require('./api/status.js')(server);
 require('./api/rooms_retrieve.js')(server, database);
 require('./api/room_retrieve.js')(server, database);
+require('./api/room_create.js')(server, database);
 require('./api/bookings_retrieve.js')(server);
 require('./api/user_create.js')(server, database);
-require('./api/login.js')(server, database);
+require('./api/user_retrieve.js')(server, database);
 require('./api/user_delete.js')(server, database);
 console.log("[STARTUP] Done");
 

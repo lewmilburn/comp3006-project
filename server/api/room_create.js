@@ -14,14 +14,15 @@ module.exports = function (server, database) {
         max_guests = require('../functions/escape.js')(max_guests)
         price = require('../functions/escape.js')(price)
         description = require('../functions/escape.js')(description)
+        image = require('../functions/escape.js')(image)
 
         require('../functions/database/room_create')(database, type, room_number, floor_number, max_guests, price, description, image).then(r => {
             if (r) {
                 console.log('[API][201] /api/room');
                 response.status(201).send('Created');
             } else {
-                console.log('[API][409] /api/room');
-                response.status(409).send('Conflict');
+                console.log('[API][500] /api/room');
+                response.status(500).send('Internal Server Error');
             }
         });
     });

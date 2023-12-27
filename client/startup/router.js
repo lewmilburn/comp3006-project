@@ -26,4 +26,7 @@ module.exports = function (client) {
     client.get("/404", function(request, response) {
         response.render("404");
     });
+    client.get("/manage", function(request, response) {
+        response.render("manage");
+    });
 }

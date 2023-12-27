@@ -13,18 +13,40 @@
         </header>
 
         <main>
-            <h2 class="ph-b">About this room</h2>
-            <p id="description"></p>
-            <h2 class="ph">Price</h2>
-            <p>This room is £<span id="price"></span> per night and can fit <span id="max_guests"></span>.</p>
+            <div class="grid grid-cols-2 gap-2 ph-b">
+                <button onclick="manageOption('newroom');" class="btn-neutral">New room</button>
+                <button onclick="manageOption('existingroom');" class="btn-neutral">Existing room</button>
+            </div>
+            <div id="newroom">
+                <%- include('forms/newroom') %>
+            </div>
+            <div id="existingroom" class="hidden">
+                <h2 class="ph-b">Change an existing room</h2>
+            </div>
         </main>
 
         <%- include('common/scripts.ejs'); -%>
-        <script src="/js/room.js"></script>
+        <!--<script src="/js/rooms.js"></script>-->
+        <script src="/js/create_room.js"></script>
         <script>
-            let url = window.location.href.replace(/\/$/, '');
-            let roomNumber = url.substr(url.lastIndexOf('/') + 1);
-            requestRoomData(roomNumber);
+            function manageOption(option) {
+                if (option === 'newroom') {
+                    if ($('#newroom').hasClass('hidden')) {
+                        $('#newroom').removeClass('hidden');
+                    }
+                    if (!$('#existingroom').hasClass('hidden')) {
+                        $('#existingroom').addClass('hidden');
+                    }
+                }
+                if (option === 'existingroom') {
+                    if ($('#existingroom').hasClass('hidden')) {
+                        $('#existingroom').removeClass('hidden');
+                    }
+                    if (!$('#newroom').hasClass('hidden')) {
+                        $('#newroom').addClass('hidden');
+                    }
+                }
+            }
         </script>
     </body>
 </html>
