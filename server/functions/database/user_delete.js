@@ -5,7 +5,6 @@ module.exports = async function(client, id, token) {
         const database = client.db("COMP3006Hotel");
         const users = database.collection("users");
         const query = { '_id': ObjectId.createFromHexString(id), 'token': token };
-        console.log(query);
         const options = {};
 
         users.deleteOne(query, options);
