@@ -17,7 +17,7 @@
                 <div>
                     <h2 class="ph-b">Bookings</h2>
                     <ul id="bookingsList" class="grid gap-2"></ul>
-                    <p id="errorMsg"></p>
+                    <p id="errorMsg">Loading...</p>
                 </div>
                 <div>
                     <h2 class="ph-b">Account details</h2>
@@ -39,6 +39,7 @@
             function reloadBookings() {
                 getUserBookings()
                     .then(data => {
+                        $('#errorMsg').text("");
                         displayBookingsList(data);
                     })
                     .catch(error => {
