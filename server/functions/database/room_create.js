@@ -17,8 +17,6 @@ module.exports = async function (client, type, room_number, floor, max_guests, p
             image: image
         };
 
-        console.log(newRoom);
-
         rooms.find(query, options);
         if ((await rooms.countDocuments(query)) === 0) {
             await rooms.insertOne(newRoom)

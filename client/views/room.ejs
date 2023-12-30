@@ -17,13 +17,27 @@
             <p id="description"></p>
             <h2 class="ph">Price</h2>
             <p>This room is £<span id="price"></span> per night and can fit <span id="max_guests"></span>.</p>
+            <h2 class="ph">Book</h2>
+            <div class="grid grid-cols-1 gap-2">
+                <div class="">
+                    <label for="room_number">Room ID</label>
+                    <input type="text" id="room_number">
+                </div>
+                <label for="start_date">Start date</label>
+                <input type="date" id="start_date">
+                <label for="end_date">Start date</label>
+                <input type="date" id="end_date">
+                <button class="btn-neutral" onclick="createBooking();">Book</button>
+            </div>
         </main>
 
         <%- include('common/scripts.ejs'); -%>
         <script src="/js/room.js"></script>
+        <script src="/js/create_booking.js"></script>
         <script>
             let url = window.location.href.replace(/\/$/, '');
             let roomNumber = url.substr(url.lastIndexOf('/') + 1);
+            $('#room_number').val(roomNumber);
             requestRoomData(roomNumber);
         </script>
     </body>

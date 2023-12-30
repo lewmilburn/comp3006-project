@@ -4,4 +4,3 @@ if (
 ) {
     window.location = '/';
 }
-console.log(localStorage.getItem('id'));
