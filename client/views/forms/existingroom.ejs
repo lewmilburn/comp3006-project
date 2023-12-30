@@ -1,0 +1,31 @@
+<div id="manageRoomForm" class="hidden">
+    <div class="grid gap-2">
+
+        <label for="ur_type" type="text">Room type</label>
+        <input id="ur_type">
+
+        <label for="ur_room_number" type="number">Room number</label>
+        <input id="ur_room_number">
+
+        <label for="ur_floor_number" type="number">Floor number</label>
+        <input id="ur_floor_number">
+
+        <label for="ur_max_guests" type="number">Max guests</label>
+        <input id="ur_max_guests">
+
+        <label for="ur_price" type="number">Price per night (GBP)</label>
+        <input id="ur_price">
+
+        <label for="ur_description" type="text">Description</label>
+        <textarea id="ur_description"></textarea>
+
+        <label for="ur_image" type="text">Image URL</label>
+        <input id="ur_image">
+
+        <div class="grid grid-cols-3 gap-2">
+            <button onclick="updateRoom()" class="btn-neutral">Update room</button>
+            <button onclick="deleteRoom()" class="btn-red">Delete room</button>
+            <button onclick="closeManageRoom()" class="btn-neutral">Cancel</button>
+        </div>
+    </div>
+</div>

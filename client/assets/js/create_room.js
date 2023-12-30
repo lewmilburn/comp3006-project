@@ -7,6 +7,14 @@ function createRoom() {
     let description = $('#nr_description').val().trim();
     let image = $('#nr_image').val().trim();
 
+    if (type === '') { alert('"Room type" input is required.'); return; }
+    if (room_number === '') { alert('"Room number" input is required.'); return; }
+    if (floor_number === '') { alert('"Floor number" input is required.'); return; }
+    if (max_guests === '') { alert('"Maximum guests" input is required.'); return; }
+    if (price === '') { alert('"Price" input is required.'); return; }
+    if (description === '') { alert('"Description" input is required.'); return; }
+    if (image === '') { alert('"Image" input is required.'); return; }
+
     let url = location.protocol + '//' + location.host + ':8080/api/room';
 
     $.post(url, {
@@ -19,16 +27,20 @@ function createRoom() {
         image: image
     })
         .done(function () {
-            $('#nr_type').val('');
-            $('#nr_room_number').val('');
-            $('#nr_floor_number').val('');
-            $('#nr_max_guests').val('');
-            $('#nr_price').val('');
-            $('#nr_description').val('');
-            $('#nr_image').val('');
-            window.location = '/manage';
+            clearCreateRoomForm();
+            alert('Room added to system.');
         })
         .fail(function () {
-            alert('Unable to create room, please try again later.');
+            alert('A room with this room number already exists, please try again later.');
         });
+}
+
+function clearCreateRoomForm() {
+    $('#nr_type').val('');
+    $('#nr_room_number').val('');
+    $('#nr_floor_number').val('');
+    $('#nr_max_guests').val('');
+    $('#nr_price').val('');
+    $('#nr_description').val('');
+    $('#nr_image').val('');
 }

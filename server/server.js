@@ -21,6 +21,7 @@ require('./api/status.js')(server);
 require('./api/rooms_retrieve.js')(server, database);
 require('./api/room_retrieve.js')(server, database);
 require('./api/room_create.js')(server, database);
+require('./api/room_delete.js')(server, database);
 require('./api/bookings_retrieve.js')(server);
 require('./api/user_create.js')(server, database);
 require('./api/user_retrieve.js')(server, database);

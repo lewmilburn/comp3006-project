@@ -21,8 +21,8 @@ module.exports = function (server, database) {
                 console.log('[API][201] /api/room');
                 response.status(201).send('Created');
             } else {
-                console.log('[API][500] /api/room');
-                response.status(500).send('Internal Server Error');
+                console.log('[API][409] /api/room');
+                response.status(409).send('Conflict');
             }
         });
     });

@@ -21,24 +21,34 @@
                 <%- include('forms/newroom') %>
             </div>
             <div id="existingroom" class="hidden">
-                <h2 class="ph-b">Change an existing room</h2>
+                <div class="flex">
+                    <h2 class="ph-b flex-grow">Change an existing room</h2>
+                    <button onclick="closeManageRoom()" class="btn-neutral hidden" id="manageUpdateCloseBtn">X</button>
+                </div>
+                <ul id="existingroomslist" class="grid grid-cols-2 gap-2"></ul>
+                <%- include('forms/existingroom') %>
             </div>
         </main>
 
         <%- include('common/scripts.ejs'); -%>
         <!--<script src="/js/rooms.js"></script>-->
         <script src="/js/create_room.js"></script>
+        <script src="/js/delete_room.js"></script>
+        <script src="/js/manage_existing_rooms.js"></script>
         <script src="/js/rooms.js"></script>
         <script>
-            requestAll(false)
-                .then(data => {
-                    // Handle the data when the request is successful
-                    console.log(data);
-                })
-                .catch(error => {
-                    // Handle errors
-                    console.error(error);
-                });
+            reloadData();
+
+            function reloadData() {
+                requestAll()
+                    .then(data => {
+                        displayList(data);
+                    })
+                    .catch(error => {
+                        // Handle errors
+                        console.error(error);
+                    });
+            }
 
             function manageOption(option) {
                 if (option === 'newroom') {
@@ -50,6 +60,7 @@
                     }
                 }
                 if (option === 'existingroom') {
+                    reloadData();
                     if ($('#existingroom').hasClass('hidden')) {
                         $('#existingroom').removeClass('hidden');
                     }

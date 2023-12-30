@@ -7,19 +7,21 @@ module.exports = async function (client, type, room_number, floor, max_guests, p
         const query = {'room_number': room_number};
         const options = {};
 
+        const newRoom = {
+            type: type,
+            room_number: room_number,
+            floor: floor,
+            max_guests: max_guests,
+            price: price,
+            description: description,
+            image: image
+        };
+
+        console.log(newRoom);
+
         rooms.find(query, options);
         if ((await rooms.countDocuments(query)) === 0) {
-            await rooms.insertOne(
-                {
-                    type: type,
-                    room_number: room_number,
-                    floor: floor,
-                    max_guests: max_guests,
-                    price: price,
-                    description: description,
-                    image: image
-                }
-            )
+            await rooms.insertOne(newRoom)
             return true;
         } else {
             return false;
