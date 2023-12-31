@@ -1,5 +1,5 @@
 module.exports = function (server, database) {
-    server.post("/api/booking", function(request, response) {
+    server.post("/api/newbooking", function(request, response) {
         let user_id = request.body.user_id;
         let room_id = request.body.room_id;
         let start_date = request.body.start_date;

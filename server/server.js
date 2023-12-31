@@ -19,13 +19,15 @@ let database = require ('./startup/database.js')(process.env.DB_CONN_STRING);
 console.log("[STARTUP][5/5] Starting Router...");
 require('./api/status.js')(server);
 require('./api/rooms_retrieve.js')(server, database);
-require('./api/room_retrieve.js')(server, database);
 require('./api/room_create.js')(server, database);
+require('./api/room_retrieve.js')(server, database);
+require('./api/room_update.js')(server, database);
 require('./api/room_delete.js')(server, database);
 require('./api/booking_create.js')(server, database);
 require('./api/booking_retrieve.js')(server, database);
 require('./api/user_create.js')(server, database);
 require('./api/user_retrieve.js')(server, database);
+require('./api/user_update.js')(server, database);
 require('./api/user_delete.js')(server, database);
 console.log("[STARTUP] Done");
 

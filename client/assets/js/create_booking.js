@@ -7,7 +7,7 @@ function createBooking() {
     if (start_date === '') { alert('"Start date" input is required.'); return; }
     if (end_date === '') { alert('"End date" input is required.'); return; }
 
-    let url = location.protocol + '//' + location.host + ':8080/api/booking';
+    let url = location.protocol + '//' + location.host + ':8080/api/newbooking';
 
     $.post(url, {
         user_id: user_id,

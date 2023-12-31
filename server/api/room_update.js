@@ -1,5 +1,5 @@
 module.exports = function (server, database) {
-    server.post("/api/newroom", function(request, response) {
+    server.post("/api/room", function(request, response) {
         let type = request.body.type;
         let room_number = request.body.room_number;
         let floor_number = request.body.floor_number;
@@ -16,13 +16,13 @@ module.exports = function (server, database) {
         description = require('../functions/escape.js')(description)
         image = require('../functions/escape.js')(image)
 
-        require('../functions/database/room_create')(database, type, room_number, floor_number, max_guests, price, description, image).then(r => {
+        require('../functions/database/room_update')(database, type, room_number, floor_number, max_guests, price, description, image).then(r => {
             if (r) {
-                console.log('[API][201] /api/room');
-                response.status(201).send('Created');
+                console.log('[API][200] /api/room');
+                response.status(200).send('Updated');
             } else {
-                console.log('[API][409] /api/room');
-                response.status(409).send('Conflict');
+                console.log('[API][404] /api/room');
+                response.status(404).send('Not Found');
             }
         });
     });
