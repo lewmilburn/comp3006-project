@@ -1,16 +1,15 @@
 module.exports = async function(client, room_number) {
-    let queryOpen = false;
     try {
         await client.connect();
         const database = client.db("COMP3006Hotel");
         const rooms = database.collection("rooms");
+
         const query = { 'room_number': room_number };
-        const options = {};
-        queryOpen = true;
-        return (await rooms.deleteOne(query, options));
+
+        rooms.deleteOne(query);
+
+        return (await rooms.countDocuments(query)) === 0;
     } finally {
-        if (queryOpen) {
-            await client.close();
-        }
+        await client.close();
     }
 }

@@ -7,12 +7,10 @@ module.exports = function (server, database) {
             response.status(400).send('Bad Request');
             return;
         }
-        console.log(room_number);
 
         room_number = require('../functions/escape.js')(room_number)
 
         require('../functions/database/room_delete')(database, room_number).then(r => {
-            console.log(r);
             if (r) {
                 console.log('[API][200] /api/deleteroom');
                 response.status(200).send('Success');
