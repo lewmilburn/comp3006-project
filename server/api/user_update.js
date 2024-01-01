@@ -3,14 +3,20 @@ module.exports = function (server, database) {
     server.post("/api/user", function(request, response) {
         let id = request.body.id;
         let email = request.body.email;
-        let password = request.body.password;
         let name = request.body.name;
+
+        let password;
+        if (request.query.password === undefined) {
+            password = false;
+        } else {
+            password = request.query.password;
+        }
 
         name = require('../functions/escape.js')(name)
         email = require('../functions/escape.js')(email)
 
-        hashPassword(password).then(hashedPassword => {
-            updateUser(database, id, email, hashedPassword, name).then(r => {
+        if (password === false) {
+            updateUser(database, id, email, password, name).then(r => {
                 if (r) {
                     console.log('[API][201] /api/user');
                     response.status(201).send('Created');
@@ -19,7 +25,19 @@ module.exports = function (server, database) {
                     response.status(404).send('Not Found');
                 }
             });
-        })
+        } else {
+            hashPassword(password).then(hashedPassword => {
+                updateUser(database, id, email, hashedPassword, name).then(r => {
+                    if (r) {
+                        console.log('[API][201] /api/user');
+                        response.status(201).send('Created');
+                    } else {
+                        console.log('[API][404] /api/booking');
+                        response.status(404).send('Not Found');
+                    }
+                });
+            });
+        }
     });
 }
 
