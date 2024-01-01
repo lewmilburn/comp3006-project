@@ -5,6 +5,7 @@ module.exports = function(webSocketPort) {
     let io = socketIo(webSocketServer);
 
     io.on("connection", function (socket) {
+        console.log('[WS][200] User connection started.');
         // When a connection is received, emit a "confirm
         // connection" event to the client.
         socket.emit("confirm connection", "[WS] Connected to WebSocket");
