@@ -8,7 +8,7 @@ function displayBookingsList(data) {
         bookingItem.textContent = `Room ${item.room_number} - from ${item.start_date} to ${item.end_date}`;
         bookingItem.className = 'btn-neutral cursor-pointer';
         bookingItem.onclick = function() {
-            displayManageBooking(item._id);
+            displayManageBooking(item._id, item.room_number, item.start_date, item.end_date);
         };
 
         existingList.append(bookingItem);
@@ -39,10 +39,19 @@ function getUserBookings() {
     });
 }
 
-function displayManageBooking(id) {
+function displayManageBooking(id, number, startDate, endDate) {
     $('#manageBooking').removeClass('hidden');
 
+    $('#roomNumber').addClass(number);
+    $('#roomNumber').text(number);
+
+    $('#startDate').text(startDate);
+    $('#endDate').text(endDate);
+
+    document.getElementById("barcode").src = 'https://barcodeapi.org/api/'+id;
+
     $('#deleteBookingId').addClass(id);
+    $('#deleteBookingId').text(id);
 }
 
 function startDeleteBooking() {
@@ -53,4 +62,10 @@ function startDeleteBooking() {
     );
 
     deleteBooking(id);
+}
+
+function goToRoom() {
+    let id = document.getElementById('roomNumber').classList[0];
+
+    window.location = '/room/' + id;
 }

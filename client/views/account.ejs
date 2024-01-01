@@ -16,10 +16,18 @@
             <div class="grid lg:grid-cols-2 gap-4">
                 <div>
                     <h2 class="ph-b">Bookings</h2>
-                    <div id="manageBooking" class="hidden ph-b">
-                        <div class="hidden"><p id="deleteBookingId" class=""></p></div>
+                    <div id="manageBooking" class="hidden card-neutral-static card-content mb-2 grid gap-2 text-center">
+                        <h3>Your booking in Room <span id="roomNumber" class=""></span></h3>
+                        <p>Check-in: <span id="startDate" class=""></span></p>
+                        <p>Check-out: <span id="endDate" class=""></span></p>
+                        <p>Booking ID: <span id="deleteBookingId" class=""></span></p>
 
-                        <button id="deleteBookingButton" class="btn-red" onclick="startDeleteBooking()">Delete</button>
+                        <h4>Check-in Code</h4>
+                        <img src="" id="barcode" alt="Booking ID" class="mx-auto">
+
+                        <h4>Actions</h4>
+                        <button id="viewRoomButton" class="btn-neutral" onclick="goToRoom()">View Room</button>
+                        <button id="deleteBookingButton" class="btn-red" onclick="startDeleteBooking()">Cancel Booking</button>
                     </div>
                     <ul id="bookingsList" class="grid gap-2"></ul>
                     <p id="errorMsg">Loading...</p>
