@@ -8,7 +8,7 @@ function displayBookingsList(data) {
         bookingItem.textContent = `Room ${item.room_number} - from ${item.start_date} to ${item.end_date}`;
         bookingItem.className = 'btn-neutral cursor-pointer';
         bookingItem.onclick = function() {
-            goToRoom(item.room_number);
+            displayManageBooking(item._id);
         };
 
         existingList.append(bookingItem);
@@ -32,13 +32,25 @@ function getUserBookings() {
 
                     success(responseData);
                 } else {
-                    error(new Error(`Request failed with status: ${this.status}`));
+                    error(this.status);
                 }
             }
         };
     });
 }
 
-function goToRoom(number) {
-    window.location = '/room/'+number;
+function displayManageBooking(id) {
+    $('#manageBooking').removeClass('hidden');
+
+    $('#deleteBookingId').addClass(id);
+}
+
+function startDeleteBooking() {
+    let id = document.getElementById('deleteBookingId').classList[0];
+
+    document.getElementById('deleteBookingId').classList.remove(
+        document.getElementById('deleteBookingId').classList[0]
+    );
+
+    deleteBooking(id);
 }

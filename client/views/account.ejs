@@ -16,6 +16,11 @@
             <div class="grid lg:grid-cols-2 gap-4">
                 <div>
                     <h2 class="ph-b">Bookings</h2>
+                    <div id="manageBooking" class="hidden ph-b">
+                        <div class="hidden"><p id="deleteBookingId" class=""></p></div>
+
+                        <button id="deleteBookingButton" class="btn-red" onclick="startDeleteBooking()">Delete</button>
+                    </div>
                     <ul id="bookingsList" class="grid gap-2"></ul>
                     <p id="errorMsg">Loading...</p>
                 </div>
@@ -30,6 +35,7 @@
 
         <%- include('common/scripts.ejs'); -%>
         <script src="/js/requests/user_request.js"></script>
+        <script src="/js/requests/booking_delete.js"></script>
         <script src="/js/account.js"></script>
         <script src="/js/user_bookings.js"></script>
         <script src="/js/requireLogin.js"></script>
@@ -43,7 +49,7 @@
                         displayBookingsList(data);
                     })
                     .catch(error => {
-                        if (error.statusCode === 404) {
+                        if (error === 404) {
                             $('#errorMsg').text("You don't have any rooms booked.");
                         } else {
                             $('#errorMsg').text("Unable to fetch bookings, please see JavaScript console for technical errors.");
