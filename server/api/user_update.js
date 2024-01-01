@@ -18,10 +18,10 @@ module.exports = function (server, database) {
         if (password === false) {
             updateUser(database, id, email, password, name).then(r => {
                 if (r) {
-                    console.log('[API][201] /api/user');
+                    console.log('[API][201] /requests/user');
                     response.status(201).send('Created');
                 } else {
-                    console.log('[API][404] /api/booking');
+                    console.log('[API][404] /requests/booking');
                     response.status(404).send('Not Found');
                 }
             });
@@ -29,10 +29,10 @@ module.exports = function (server, database) {
             hashPassword(password).then(hashedPassword => {
                 updateUser(database, id, email, hashedPassword, name).then(r => {
                     if (r) {
-                        console.log('[API][201] /api/user');
+                        console.log('[API][201] /requests/user');
                         response.status(201).send('Created');
                     } else {
-                        console.log('[API][404] /api/booking');
+                        console.log('[API][404] /requests/booking');
                         response.status(404).send('Not Found');
                     }
                 });

@@ -11,10 +11,10 @@ module.exports = function (server, database) {
         hashPassword(password).then(hashedPassword => {
             registerUser(database, email, hashedPassword, name).then(r => {
                 if (r) {
-                    console.log('[API][201] /api/register');
+                    console.log('[API][201] /requests/register');
                     response.status(201).send('Created');
                 } else {
-                    console.log('[API][409] /api/register');
+                    console.log('[API][409] /requests/register');
                     response.status(409).send('Conflict');
                 }
             });

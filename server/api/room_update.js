@@ -18,10 +18,10 @@ module.exports = function (server, database) {
 
         require('../functions/database/room_update')(database, type, room_number, floor_number, max_guests, price, description, image).then(r => {
             if (r) {
-                console.log('[API][200] /api/room');
+                console.log('[API][200] /requests/room');
                 response.status(200).send('Updated');
             } else {
-                console.log('[API][404] /api/room');
+                console.log('[API][404] /requests/room');
                 response.status(404).send('Not Found');
             }
         });

@@ -8,10 +8,10 @@ module.exports = function (server, database) {
 
         require('../functions/database/booking_update')(database, id, user_id, room_id, start_date, end_date).then(r => {
             if (r) {
-                console.log('[API][200] /api/booking');
+                console.log('[API][200] /requests/booking');
                 response.status(201).send('Created');
             } else {
-                console.log('[API][404] /api/booking');
+                console.log('[API][404] /requests/booking');
                 response.status(404).send('Not Found');
             }
         });

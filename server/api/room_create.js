@@ -18,10 +18,10 @@ module.exports = function (server, database) {
 
         require('../functions/database/room_create')(database, type, room_number, floor_number, max_guests, price, description, image).then(r => {
             if (r) {
-                console.log('[API][201] /api/room');
+                console.log('[API][201] /requests/room');
                 response.status(201).send('Created');
             } else {
-                console.log('[API][409] /api/room');
+                console.log('[API][409] /requests/room');
                 response.status(409).send('Conflict');
             }
         });

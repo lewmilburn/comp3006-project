@@ -7,10 +7,10 @@ module.exports = function (server, database) {
 
         require('../functions/database/booking_create')(database, user_id, room_id, start_date, end_date).then(r => {
             if (r) {
-                console.log('[API][201] /api/newbooking');
+                console.log('[API][201] /requests/newbooking');
                 response.status(201).send('Created');
             } else {
-                console.log('[API][409] /api/newbooking');
+                console.log('[API][409] /requests/newbooking');
                 response.status(409).send('Conflict');
             }
         });

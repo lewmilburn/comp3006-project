@@ -7,7 +7,7 @@ module.exports = function (server, database) {
 
         require('../functions/database/user_delete')(database, id, token).then(r  => {
             console.log(r);
-            console.log('[API][200] /api/deleteuser');
+            console.log('[API][200] /requests/deleteuser');
             response.status(200).send('Success');
         });
     });
