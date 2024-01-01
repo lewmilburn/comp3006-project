@@ -51,8 +51,8 @@ async function hashPassword(password) {
         .catch(err => console.error(err.message));
 }
 
-async function updateUser(client, email, password, name) {
+async function updateUser(client, id, email, password, name) {
     return hashPassword(name).then(token => {
-        return require('../functions/database/user_update')(client, email, password, name, token);
+        return require('../functions/database/user_update')(client, id, email, password, name, token);
     });
 }
