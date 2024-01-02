@@ -79,6 +79,40 @@ describe('Tests', () => {
                 });
             });
         });
+        describe('Booking', () => {
+            let testBookingNumber;
+            it('Add booking', async () => {
+                console.log('[TEST][10/9] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/booking_create')(await database, 'TEST', 'TEST', '0000-00-00', '0000-00-00').then(r => {
+                    let res = r !== null;
+                    console.log('[TEST][10/9] Result: '+r);
+                    console.log('[TEST][10/9] Done');
+                    equal(res, true, 'Could not add booking.');
+                });
+            });
+            it('Retrieve booking', async () => {
+                console.log('[TEST][11/9] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/booking_retrieve')(await database, 'TEST', 'TEST').then(r => {
+                    testBookingNumber = r[0]._id;
+                    let res = r !== null;
+                    console.log('[TEST][11/9] Result: '+r);
+                    console.log('[TEST][11/9] Done');
+                    equal(res, true, 'No booking in database.');
+                });
+            });
+            it('Update test booking', async () => {
+                console.log('[TEST][9/9] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/booking_update')(await database, testBookingNumber, '1000-00-00', '1000-00-00').then(r => {
+                    let res = r !== null;
+                    console.log('[TEST][9/9] Result: '+r);
+                    console.log('[TEST][9/9] Done');
+                    equal(res, true, 'Could not delete room.');
+                });
+            });
+        });
     });
 });
 
