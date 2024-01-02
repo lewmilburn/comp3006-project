@@ -1,4 +1,4 @@
-module.exports = function(connectionString) {
+module.exports = async function(connectionString) {
     const { MongoClient, ServerApiVersion } = require('mongodb');
 
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -10,18 +10,14 @@ module.exports = function(connectionString) {
         }
     });
 
-    async function run() {
-        try {
-            await client.connect();
+    try {
+        await client.connect();
 
-            await client.db("admin").command({ ping: 1 });
-            console.log("[DB] Connected to database.");
-        } finally {
-            await client.close();
-        }
+        await client.db("admin").command({ ping: 1 });
+        console.log("[DB] Connected to database.");
+
+        return await client;
+    } finally {
+        await client.close();
     }
-
-    run().catch(console.dir);
-
-    return client;
 }
