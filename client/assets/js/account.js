@@ -1,4 +1,4 @@
 $('#id').text(localStorage.getItem('id'));
-$('#name').val(localStorage.getItem('name'));
+$('#name').text(localStorage.getItem('name'));
 $('#nameInput').val(localStorage.getItem('name'));
 $('#emailInput').val(localStorage.getItem('email'));
