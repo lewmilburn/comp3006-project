@@ -134,6 +134,50 @@ describe('Tests', () => {
                 });
             });
         });
+        describe('User', () => {
+            let testUserId;
+            it('Add user', async () => {
+                console.log('[TEST][15/14] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/user_create')(await database, 'test@test.com', 'test', 'John Doe', 'TOKEN').then(r => {
+                    let res = r !== null;
+                    console.log('[TEST][15/14] Result: '+r);
+                    console.log('[TEST][15/14] Done');
+                    equal(res, true, 'Could not add booking.');
+                });
+            });
+            it('Retrieve user', async () => {
+                console.log('[TEST][15/14] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/user_retrieve')(await database, 'test@test.com').then(r => {
+                    let res = r !== null;
+                    testUserId = r._id+'';
+                    console.log('[TEST][15/14] Result: '+r);
+                    console.log('[TEST][15/14] Done');
+                    equal(res, true, 'Could not add booking.');
+                });
+            });
+            it('Update user', async () => {
+                console.log('[TEST][15/14] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/user_update')(await database, testUserId, 'test@test.edu', 'AnotherTest', 'Jane Doe', 'TOKEN2!').then(r => {
+                    let res = r !== null;
+                    console.log('[TEST][15/14] Result: '+r);
+                    console.log('[TEST][15/14] Done');
+                    equal(res, true, 'Could not add booking.');
+                });
+            });
+            it('Delete user', async () => {
+                console.log('[TEST][15/14] Running...')
+                let database = await require('./startup/database')(connString);
+                await require('./functions/database/user_delete')(await database, testUserId, 'TOKEN2!').then(r => {
+                    let res = r !== null;
+                    console.log('[TEST][15/14] Result: '+r);
+                    console.log('[TEST][15/14] Done');
+                    equal(res, true, 'Could not add booking.');
+                });
+            });
+        });
     });
 });
 
