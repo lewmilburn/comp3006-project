@@ -6,10 +6,11 @@ module.exports = function (server, database) {
         let name = request.body.name;
 
         let password;
-        if (request.query.password === undefined) {
+
+        if (request.body.password === undefined) {
             password = false;
         } else {
-            password = request.query.password;
+            password = request.body.password;
         }
 
         name = require('../functions/escape.js')(name)
@@ -32,7 +33,7 @@ module.exports = function (server, database) {
                         console.log('[API][201] /requests/user');
                         response.status(201).send('Created');
                     } else {
-                        console.log('[API][404] /requests/booking');
+                        console.log('[API][404] /requests/user');
                         response.status(404).send('Not Found');
                     }
                 });

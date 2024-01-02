@@ -25,7 +25,7 @@ main { @apply p-std dark:text-white }
 .card-image { @apply bg-center bg-cover h-40 }
 
 .card-neutral { @apply card bg-neutral-200 hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 }
-.card-neutral-static { @apply card bg-neutral-200 dark:bg-neutral-900 }
+.card-neutral-static { @apply card bg-neutral-300 dark:bg-black }
 /* Buttons */
 .btn { @apply px-2 py-1 transition duration-200 rounded-md }
 

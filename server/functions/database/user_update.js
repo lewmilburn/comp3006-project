@@ -7,6 +7,7 @@ module.exports = async function (client, id, email, password, name, token) {
 
         const filter = {'_id': ObjectId.createFromHexString(id)};
         let newValues;
+
         if (password === false) {
             newValues = {
                 $set: {
@@ -26,7 +27,7 @@ module.exports = async function (client, id, email, password, name, token) {
             };
         }
 
-        await users.updateOne(filter, newValues);
+        return await users.updateOne(filter, newValues);
     } finally {
         await client.close();
     }

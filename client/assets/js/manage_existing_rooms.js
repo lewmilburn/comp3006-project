@@ -18,6 +18,7 @@ function displayList(data) {
 }
 
 function manageRoom(room) {
+    $('#ur_id').val(room._id)
     $('#ur_type').val(room.type)
     $('#ur_room_number').val(room.room_number)
     $('#ur_floor_number').val(room.floor)
@@ -32,6 +33,7 @@ function manageRoom(room) {
 }
 
 function closeManageRoom() {
+    $('#ur_id').val('')
     $('#ur_type').val('')
     $('#ur_room_number').val('')
     $('#ur_floor_number').val('')

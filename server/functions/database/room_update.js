@@ -1,12 +1,13 @@
-module.exports = async function (client, type, room_number, floor, max_guests, price, description, image) {
+const {ObjectId} = require("mongodb");
+module.exports = async function (client, id, type, room_number, floor, max_guests, price, description, image) {
     try {
         await client.connect();
         const database = client.db("COMP3006Hotel");
         const rooms = database.collection("rooms");
 
-        const filter = {'room_number': room_number};
+        const filter = {'_id': ObjectId.createFromHexString(id)};
 
-        const newValues = {
+        const newValues = { $set: {
             type: type,
             room_number: room_number,
             floor: floor,
@@ -14,10 +15,13 @@ module.exports = async function (client, type, room_number, floor, max_guests, p
             price: price,
             description: description,
             image: image
-        };
+        }};
+        const options = {upsert: true};
 
-        await rooms.updateOne(filter, newValues)
-        return true;
+        console.log(filter);
+        console.log(newValues);
+
+        return await rooms.updateOne(filter, newValues, options);
     } finally {
         await client.close();
     }

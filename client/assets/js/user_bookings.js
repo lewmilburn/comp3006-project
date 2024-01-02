@@ -45,20 +45,20 @@ function displayManageBooking(id, number, startDate, endDate) {
     $('#roomNumber').addClass(number);
     $('#roomNumber').text(number);
 
-    $('#startDate').text(startDate);
-    $('#endDate').text(endDate);
+    $('#startDate').val(startDate);
+    $('#endDate').val(endDate);
 
     document.getElementById("barcode").src = 'https://barcodeapi.org/api/'+id;
 
-    $('#deleteBookingId').addClass(id);
-    $('#deleteBookingId').text(id);
+    $('#bookingId').addClass(id);
+    $('#bookingId').text(id);
 }
 
 function startDeleteBooking() {
-    let id = document.getElementById('deleteBookingId').classList[0];
+    let id = document.getElementById('bookingId').classList[0];
 
-    document.getElementById('deleteBookingId').classList.remove(
-        document.getElementById('deleteBookingId').classList[0]
+    document.getElementById('bookingId').classList.remove(
+        document.getElementById('bookingId').classList[0]
     );
 
     deleteBooking(id);
@@ -68,4 +68,10 @@ function goToRoom() {
     let id = document.getElementById('roomNumber').classList[0];
 
     window.location = '/room/' + id;
+}
+
+function startUpdateBooking() {
+    let id = document.getElementById('bookingId').classList[0];
+
+    updateBooking(id);
 }
