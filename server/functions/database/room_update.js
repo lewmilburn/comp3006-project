@@ -18,9 +18,6 @@ module.exports = async function (client, id, type, room_number, floor, max_guest
         }};
         const options = {upsert: true};
 
-        console.log(filter);
-        console.log(newValues);
-
         return await rooms.updateOne(filter, newValues, options);
     } finally {
         await client.close();
