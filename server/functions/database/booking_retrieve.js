@@ -1,6 +1,8 @@
-module.exports = async function(client, roomNumber, userID) {
+module.exports = async function(client, roomNumber, userID, connected = false) {
     try {
-        await client.connect();
+        if (connected === false) {
+            await client.connect();
+        }
         const database = client.db("COMP3006Hotel");
         const bookings = database.collection("bookings");
 
@@ -16,9 +18,6 @@ module.exports = async function(client, roomNumber, userID) {
         const options = {};
 
         const cursor = bookings.find(query, options);
-        if ((await bookings.countDocuments(query)) === 0) {
-            return null;
-        }
 
         let arr = [];
         let i = 0;
@@ -28,6 +27,8 @@ module.exports = async function(client, roomNumber, userID) {
         }
         return arr;
     } finally {
-        await client.close();
+        if (connected === false) {
+            await client.close();
+        }
     }
 }
