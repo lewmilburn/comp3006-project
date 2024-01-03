@@ -2,8 +2,6 @@ let express = require("express");
 let client = express();
 let port = 80;
 
-
-
 console.log("[STARTUP][1/3] Setting up...");
 require('./startup/setup.js')(client);
 
