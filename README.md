@@ -8,8 +8,13 @@ On macOS/Linux systems you can run up.sh, on Windows systems type the following 
 `docker-compose up -d`
 
 ## Ports
+### Client
 | Port | Usage                        |
 |------|------------------------------|
 | 80   | Client-side website          |
+
+### Server
+| Port | Usage                        |
+|------|------------------------------|
 | 8080 | Server main port             |
 | 6436 | Websocket communication port |
