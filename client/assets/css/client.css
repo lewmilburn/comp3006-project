@@ -2755,7 +2755,7 @@ main {
 
 .ph {
   padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 
 .ph-b {
@@ -2763,7 +2763,7 @@ main {
 }
 
 .ph-t {
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
 
 /* Cards */

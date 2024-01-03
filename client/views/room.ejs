@@ -3,6 +3,7 @@
     <head>
         <title>Room - Hotel Plymouth</title>
         <%- include('common/head.ejs'); -%>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.css" />
     </head>
     <body>
         <%- include('common/nav.ejs'); -%>
@@ -15,9 +16,12 @@
         <main>
             <h2 class="ph-b">About this room</h2>
             <p id="description"></p>
+
             <h2 class="ph">Price</h2>
             <p>This room is £<span id="price"></span> per night and can fit <span id="max_guests"></span>.</p>
+
             <h2 class="ph">Book</h2>
+
             <div class="grid grid-cols-1 gap-2">
                 <div class="hidden">
                     <label for="room_number">Room ID</label>
@@ -29,16 +33,47 @@
                 <input type="date" id="end_date">
                 <button class="btn-neutral" onclick="createBooking();">Book</button>
             </div>
+
+            <h3 class="ph">Availability</h3>
+            <div class="calendar" id="calendar" data-provide="calendar"></div>
         </main>
 
         <%- include('common/scripts.ejs'); -%>
         <script src="/js/room.js"></script>
         <script src="/js/requests/booking_create.js"></script>
+        <script src="/js/requests/booking_retrieve.js"></script>
+        <script src="https://unpkg.com/js-year-calendar@latest/dist/js-year-calendar.min.js"></script>
         <script>
             let url = window.location.href.replace(/\/$/, '');
             let roomNumber = url.substr(url.lastIndexOf('/') + 1);
+
             $('#room_number').val(roomNumber);
-            requestRoomData(roomNumber);
+
+            requestRoomData(roomNumber)
+                .then(data => {
+                    displayData(data);
+
+                    getRoomBookings(roomNumber)
+                        .then(data => {
+                            new Calendar('#calendar', {
+                                dataSource: function() {
+                                    if (data) {
+                                        return data.map(r => ({
+                                            startDate: new Date(r.start_date),
+                                            endDate: new Date(r.end_date),
+                                            color: 'red'
+                                        }));
+                                    }
+
+                                    return [];
+                                }
+                            });
+                        }).catch(error => {
+                            console.error(error);
+                        });
+                }).catch(error => {
+                    console.error(error);
+                });
         </script>
     </body>
 </html>
