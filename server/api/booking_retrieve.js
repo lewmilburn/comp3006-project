@@ -16,15 +16,15 @@ module.exports = function (server, database) {
         }
 
         if (roomNumber === false && userID === false) {
-            console.log('[API][400] /requests/room')
+            console.log('[API][400] /api/booking')
             response.status(400).send('Bad request');
         } else {
-            require('../functions/database/booking_retrieve')(database, roomNumber, userID).then(r => {
+            require('../functions/database/booking_retrieve')(database, roomNumber, userID, false).then(r => {
                 if (r === null) {
-                    console.log('[API][404] /requests/room')
+                    console.log('[API][404] /api/booking')
                     response.status(404).send('Not found');
                 } else {
-                    console.log('[API][200] /requests/room')
+                    console.log('[API][200] /api/room')
                     response.setHeader('Content-Type', 'application/json');
                     response.send(r);
                 }
