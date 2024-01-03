@@ -29,7 +29,7 @@
                 </div>
                 <label for="start_date">Start date</label>
                 <input type="date" id="start_date">
-                <label for="end_date">Start date</label>
+                <label for="end_date">End date</label>
                 <input type="date" id="end_date">
                 <button class="btn-neutral" onclick="createBooking();">Book</button>
             </div>
@@ -55,19 +55,29 @@
 
                     getRoomBookings(roomNumber)
                         .then(data => {
-                            new Calendar('#calendar', {
+                            let greenData = new Object({_id: '', user_id: '', roomNumber: '', start_date: '2024-01-01', end_date: '2024-12-30', color: 'green'});
+                            data.unshift(greenData);
+                            for (let item in data) {
+                                data[item] = data[item];
+                                if (data[item].color === undefined) {
+                                    data[item].color = 'red';
+                                }
+                            }
+                            const calendar = new Calendar('#calendar', {
                                 dataSource: function() {
                                     if (data) {
+                                        console.log(data);
                                         return data.map(r => ({
                                             startDate: new Date(r.start_date),
                                             endDate: new Date(r.end_date),
-                                            color: 'red'
+                                            color: r.color
                                         }));
                                     }
 
                                     return [];
                                 }
                             });
+                            calendar.setStyle('background');
                         }).catch(error => {
                             console.error(error);
                         });
