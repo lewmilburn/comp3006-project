@@ -14,7 +14,6 @@ function requestRoomData(roomNumber) {
 }
 
 function displayData(response) {
-    console.log(response);
     $('#type').text(response[0].type);
     $('#guests').text(response[0].max_guests);
     $('#roomNumber').text(response[0].room_number);
