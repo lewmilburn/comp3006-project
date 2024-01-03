@@ -10,14 +10,16 @@ $(function () {
         rejectUnauthorized: false
     });
 
-    socket.on("confirm connection", function (msg) {
+    socket.on("ping", function () {
         i = 0;
-        console.log(msg);
         websocketStatus('Connected');
         clientConnected();
     });
-    socket.on("send message", function (msg) {
-        console.log(msg);
+    socket.on("update-booking", function () {
+        console.log('[WS] Update booking');
+    });
+    socket.on("update-room", function () {
+        console.log('[WS] Update room');
     });
     socket.on("disconnect", (reason) => {
         if (reason === "io server disconnect") {
@@ -36,12 +38,12 @@ $(function () {
             clientOffline();
         }
     });
-    socket.emit("request", "Hello from the client");
 
-    $("#send").on( "click", function() {
-        let input = $("#msg");
-        socket.emit("send message", input.val());
-        appendMessage(input.val(), 'message sent');
-        input.val("");
+    $("#updateRoomBtn").on( "click", function() {
+        socket.emit("update-room");
+    });
+
+    $("#createBookingBtn").on( "click", function() {
+        socket.emit("update-booking");
     });
 });

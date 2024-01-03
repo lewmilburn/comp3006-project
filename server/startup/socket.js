@@ -6,12 +6,15 @@ module.exports = function(webSocketPort) {
 
     io.on("connection", function (socket) {
         console.log('[WS][200] User connection started.');
-        // When a connection is received, emit a "confirm
-        // connection" event to the client.
-        socket.emit("confirm connection", "[WS] Connected to WebSocket");
-        socket.on("send message", function (msg) {
-            console.log("[WS] Received message '"+msg+"'");
-            socket.broadcast.emit("send message", msg);
+        socket.emit("ping");
+
+        socket.on("update-booking", function () {
+            console.log("[WS] Received booking update ping.");
+            socket.broadcast.emit("update-booking");
+        });
+        socket.on("update-room", function () {
+            console.log("[WS] Received room update ping.");
+            socket.broadcast.emit("update-room");
         });
     });
 
