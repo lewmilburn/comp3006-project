@@ -1,7 +1,7 @@
 function requestAll() {
     return new Promise((success, error) => {
         let xmlHttp = new XMLHttpRequest();
-        let url = location.protocol + '//' + location.host + ':8080/api/rooms';
+        let url = SETTINGS.API_URL + '/api/rooms';
 
         xmlHttp.open("GET", url, true);
         xmlHttp.send();

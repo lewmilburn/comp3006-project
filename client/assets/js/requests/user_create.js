@@ -4,7 +4,7 @@ function register() {
     let firstname = $('#firstname').val().trim();
     let lastname = $('#lastname').val().trim();
     let name = firstname + ' ' + lastname;
-    let url = location.protocol + '//' + location.host + ':8080/api/register';
+    let url = SETTINGS.API_URL + '/api/register';
 
     $.post(url, { email: email, password: pass, name: name })
         .always(function() {

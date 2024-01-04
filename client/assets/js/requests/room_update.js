@@ -19,7 +19,7 @@ function updateRoom() {
     if (description === '') { alert('"Description" input is required.'); return; }
     if (image === '') { alert('"Image" input is required.'); return; }
 
-    let url = location.protocol + '//' + location.host + ':8080/api/room';
+    let url = SETTINGS.API_URL + '/api/room';
 
     $.post(url, {
         id: id,

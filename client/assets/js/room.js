@@ -9,7 +9,7 @@ async function requestRoomData(roomNumber) {
                 window.location = '/404';
             }
         };
-        let url = location.protocol + '//' + location.host + ':8080/api/room?roomNumber='+roomNumber;
+        let url = SETTINGS.API_URL + '/api/room?roomNumber='+roomNumber;
 
         xmlHttp.open("GET", url, true);
         xmlHttp.send();

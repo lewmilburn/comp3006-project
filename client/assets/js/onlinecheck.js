@@ -1,11 +1,11 @@
 let connections = 0;
 
 function checkOnline() {
-    let request = $.get('http://localhost:8080/status');
+    let request = $.get(SETTINGS.API_URL+'/status');
 
     serverStatus('Checking...');
 
-    request.done(function(result) {
+    request.done(function() {
         serverStatus('Online.');
         clientConnected();
     });

@@ -5,7 +5,7 @@ function deleteAccount() {
         console.log('[ERROR] ID and Token is null.');
         return;
     }
-    let url = location.protocol + '//' + location.host + ':8080/api/deleteuser';
+    let url = SETTINGS.API_URL + '/api/deleteuser';
 
     $.post(url, { id: id, token: token })
         .done(function(result) {

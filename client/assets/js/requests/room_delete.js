@@ -1,7 +1,7 @@
 function deleteRoomRequest(room_number) {
     room_number = room_number.trim();
 
-    let url = location.protocol + '//' + location.host + ':8080/api/deleteroom';
+    let url = SETTINGS.API_URL + '/api/deleteroom';
 
     $.ajax({
         url: url,

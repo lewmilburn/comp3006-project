@@ -1,7 +1,7 @@
 function deleteBooking(id) {
     if (id === '') { alert('"Unable to submit request, please reload the page and try again.'); return; }
 
-    let url = location.protocol + '//' + location.host + ':8080/api/deletebooking';
+    let url = SETTINGS.API_URL + '/api/deletebooking';
 
     $.post(url, {
         id: id

@@ -1,7 +1,7 @@
 function login() {
     let email = $('#email').val().trim();
     let pass = $('#password').val().trim();
-    let url = location.protocol + '//' + location.host + ':8080/api/login';
+    let url = SETTINGS.API_URL + '/api/login';
 
     $.post(url, { email: email, password: pass, name: name })
         .always(function() {

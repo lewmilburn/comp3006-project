@@ -3,7 +3,7 @@ function updateAccount() {
     let name = $('#nameInput').val().trim();
     let pass = $('#passInput').val().trim();
 
-    let url = location.protocol + '//' + location.host + ':8080/api/user';
+    let url = SETTINGS.API_URL + '/api/user';
 
     if (pass === '') {
         pass = false;

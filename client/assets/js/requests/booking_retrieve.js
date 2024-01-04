@@ -2,7 +2,7 @@ async function getRoomBookings(room_number) {
     return new Promise((success, error) => {
         let xmlHttp = new XMLHttpRequest();
 
-        let url = location.protocol + '//' + location.host + ':8080/api/booking?roomNumber='+room_number;
+        let url = SETTINGS.API_URL + '/api/booking?roomNumber='+room_number;
 
         xmlHttp.open("GET", url, true);
         xmlHttp.send();

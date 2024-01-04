@@ -15,7 +15,7 @@ function createRoom() {
     if (description === '') { alert('"Description" input is required.'); return; }
     if (image === '') { alert('"Image" input is required.'); return; }
 
-    let url = location.protocol + '//' + location.host + ':8080/api/newroom';
+    let url = SETTINGS.API_URL + '/api/newroom';
 
     $.post(url, {
         type: type,

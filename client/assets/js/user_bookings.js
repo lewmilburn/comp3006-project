@@ -20,7 +20,7 @@ function displayBookingsList(data) {
 function getUserBookings() {
     return new Promise((success, error) => {
         let xmlHttp = new XMLHttpRequest();
-        let url = location.protocol + '//' + location.host + ':8080/api/booking?userID='+localStorage.getItem('id');
+        let url = SETTINGS.API_URL + '/api/booking?userID='+localStorage.getItem('id');
 
         xmlHttp.open("GET", url, true);
         xmlHttp.send();

@@ -5,7 +5,7 @@ function updateBooking(id) {
     if (startDate === '') { alert('"Start date" input is required.'); return; }
     if (endDate === '') { alert('"End date" input is required.'); return; }
 
-    let url = location.protocol + '//' + location.host + ':8080/api/booking';
+    let url = SETTINGS.API_URL + '/api/booking';
 
     $.post(url, {
         id: id,
