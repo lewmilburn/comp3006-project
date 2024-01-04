@@ -17,7 +17,7 @@ Hotel app is a room booking system that allows customers to book rooms at the Ho
 
 # Running the System
 You'll need to use Docker to run this system.
-On macOS/Linux systems you can run up.sh, on Windows systems type the following command into the terminal after cd'ing into the /comp3006-project folder.
+On macOS/Linux systems you can run up.sh, on Windows systems type the following command into the terminal after cd'ing into the /hotel-app folder.
 
 `docker-compose up -d`
 
