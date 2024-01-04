@@ -9,7 +9,6 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=lewmilburn_comp3006-project&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=lewmilburn_comp3006-project)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=lewmilburn_comp3006-project&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=lewmilburn_comp3006-project)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=lewmilburn_comp3006-project&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=lewmilburn_comp3006-project)
-[![StyleCI Status](https://github.styleci.io/repos/706635533/shield)](https://github.styleci.io/repos/706635533)
 
 ## Ratings
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lewmilburn_comp3006-project&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=lewmilburn_comp3006-project)
