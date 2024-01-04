@@ -15,12 +15,6 @@
         websocketStatus('Connected');
         clientConnected();
     });
-    socket.on("update-booking", function () {
-        console.log('[WS] Update booking');
-    });
-    socket.on("update-room", function () {
-        console.log('[WS] Update room');
-    });
     socket.on("disconnect", (reason) => {
         if (reason === "io server disconnect") {
             console.log("[WS] Disconnected - attempting reconnect...")
@@ -37,14 +31,6 @@
         if (ci === 9) {
             clientOffline();
         }
-    });
-
-    $("#updateRoomBtn").on( "click", function() {
-        socket.emit("update-room");
-    });
-
-    $("#createBookingBtn").on( "click", function() {
-        socket.emit("update-booking");
     });
 
     function socketUpdateRoom() {

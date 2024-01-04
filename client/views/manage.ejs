@@ -39,6 +39,11 @@
         <script>
             reloadData();
 
+            socket.on("update-room", function () {
+                console.log('Room update received.')
+                reloadData();
+            });
+
             function reloadData() {
                 requestAll()
                     .then(data => {

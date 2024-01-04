@@ -20,13 +20,22 @@
         <%- include('common/scripts.ejs'); -%>
         <script src="/js/rooms.js"></script>
         <script>
-            requestAll(true)
-                .then(data => {
-                    displayAll(data);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+            getRoomData();
+
+            socket.on("update-room", function () {
+                console.log('Room update received.')
+                getRoomData();
+            });
+
+            function getRoomData() {
+                requestAll(true)
+                    .then(data => {
+                        displayAll(data);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
         </script>
     </body>
 </html>

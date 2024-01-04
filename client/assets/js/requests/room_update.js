@@ -28,8 +28,7 @@ function updateRoom() {
         floor_number: floor_number,
         max_guests: max_guests,
         price: price,
-        description: description,
-        image: image
+        description: description
     })
         .done(function () {
             socketUpdateRoom();

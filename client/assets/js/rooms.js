@@ -21,6 +21,7 @@ function requestAll() {
 }
 
 function displayAll(rooms) {
+    $("#roomList").clear;
     for (const room of rooms) {
         $("#roomList").append("<a href='/room/"+room.room_number+"' class='card-neutral'><div class='card-image' style='background-image: url("+room.image+")'></div><div class='card-content'>"+room.type+" room on the floor "+room.floor+" for £"+room.price+"/night</div></a>")
     }

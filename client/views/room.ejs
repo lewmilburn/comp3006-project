@@ -49,41 +49,58 @@
 
             $('#room_number').val(roomNumber);
 
-            requestRoomData(roomNumber)
-                .then(data => {
-                    displayData(data);
+            getRoomData();
 
-                    getRoomBookings(roomNumber)
-                        .then(data => {
-                            let greenData = new Object({_id: '', user_id: '', roomNumber: '', start_date: '2024-01-01', end_date: '2024-12-30', color: 'green'});
-                            data.unshift(greenData);
-                            for (let item in data) {
-                                data[item] = data[item];
-                                if (data[item].color === undefined) {
-                                    data[item].color = 'red';
-                                }
-                            }
-                            const calendar = new Calendar('#calendar', {
-                                dataSource: function() {
-                                    if (data) {
-                                        console.log(data);
-                                        return data.map(r => ({
-                                            startDate: new Date(r.start_date),
-                                            endDate: new Date(r.end_date),
-                                            color: r.color
-                                        }));
-                                    }
+            socket.on("update-room", function () {
+                console.log('Room update received.')
+                getRoomData();
+            });
 
-                                    return [];
-                                }
-                            });
-                            calendar.setStyle('background');
-                        }).catch(error => {
-                            console.error(error);
-                        });
-                }).catch(error => {
+            socket.on("update-booking", function () {
+                console.log('Bookings update received.')
+                getBookingInfo();
+            });
+
+            function getRoomData() {
+                requestRoomData(roomNumber)
+                    .then(data => {
+                        displayData(data);
+                        getBookingInfo();
+
+                    }).catch(error => {
                     console.error(error);
                 });
+            }
+
+            function getBookingInfo() {
+                getRoomBookings(roomNumber)
+                    .then(data => {
+                        let greenData = new Object({_id: '', user_id: '', roomNumber: '', start_date: '2024-01-01', end_date: '2024-12-30', color: 'green'});
+                        data.unshift(greenData);
+                        for (let item in data) {
+                            data[item] = data[item];
+                            if (data[item].color === undefined) {
+                                data[item].color = 'red';
+                            }
+                        }
+                        const calendar = new Calendar('#calendar', {
+                            dataSource: function() {
+                                if (data) {
+                                    return data.map(r => ({
+                                        startDate: new Date(r.start_date),
+                                        endDate: new Date(r.end_date),
+                                        color: r.color
+                                    }));
+                                }
+
+                                return [];
+                            }
+                        });
+                        calendar.setStyle('background');
+                    }).catch(error => {
+                    console.error(error);
+                });
+            }
         </script>
     </body>
 </html>
