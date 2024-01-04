@@ -1,5 +1,5 @@
 # Hotel App
-> USE MORE THAN 1 CONTAINER - BACKEND, FRONTEND, DATABASE
+Hotel app is a room booking system that allows customers to book rooms at the Hotel Plymouth.
 
 ## Stats
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=lewmilburn_comp3006-project&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=lewmilburn_comp3006-project)
