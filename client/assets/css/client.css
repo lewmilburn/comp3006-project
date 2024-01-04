@@ -667,6 +667,10 @@ video {
   isolation: auto;
 }
 
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .float-right {
   float: right;
 }
@@ -1813,6 +1817,11 @@ video {
 .bg-green-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
 .bg-red-100 {

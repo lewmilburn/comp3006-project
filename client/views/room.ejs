@@ -29,16 +29,20 @@
             </div>
             <h2 class="ph">Book</h2>
 
-            <div class="grid grid-cols-1 gap-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
                 <div class="hidden">
                     <label for="room_number">Room ID</label>
                     <input type="text" id="room_number">
                 </div>
+                <div class="grid gap-2">
                 <label for="start_date">Start date</label>
                 <input type="date" id="start_date">
+                </div>
+                <div class="grid gap-2">
                 <label for="end_date">End date</label>
                 <input type="date" id="end_date">
-                <button class="btn-neutral" onclick="createBooking();" id="createBookingBtn">Book</button>
+                </div>
+                <button class="btn-neutral col-span-2" onclick="createBooking();" id="createBookingBtn">Book</button>
             </div>
 
             <h3 class="ph">Availability</h3>
