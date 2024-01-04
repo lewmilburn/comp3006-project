@@ -22,13 +22,8 @@ function clientOffline() {
 function clientConnected() {
     connections++;
     if (connections >= 2) {
-        $("#connectionScreen").removeClass("bg-red-100");
         document.getElementById('serviceStatus').innerHTML = 'Connected.';
-        setTimeout(
-            function()
-            {
-                $("#connectionScreen").css("display", "none");
-            }, 2000);
+        $("#connectionScreen").css("display", "none");
     }
 }
 
