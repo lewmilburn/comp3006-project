@@ -9,11 +9,11 @@ module.exports = function(webSocketPort) {
         socket.emit("ping");
 
         socket.on("update-booking", function () {
-            console.log("[WS] Received booking update ping.");
+            console.log("[WS][200][PING] Received booking update ping.");
             socket.broadcast.emit("update-booking");
         });
         socket.on("update-room", function () {
-            console.log("[WS] Received room update ping.");
+            console.log("[WS][200][PING] Received room update ping.");
             socket.broadcast.emit("update-room");
         });
     });
