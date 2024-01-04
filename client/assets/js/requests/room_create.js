@@ -23,7 +23,8 @@ function createRoom() {
         floor_number: floor_number,
         max_guests: max_guests,
         price: price,
-        description: description
+        description: description,
+        image: image
     })
         .done(function () {
             socketUpdateRoom();

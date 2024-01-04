@@ -15,7 +15,6 @@ module.exports = function (server, database) {
         max_guests = require('../functions/escape.js')(max_guests)
         price = require('../functions/escape.js')(price)
         description = require('../functions/escape.js')(description)
-        image = require('../functions/escape.js')(image)
 
         require('../functions/database/room_update')(database, id, type, room_number, floor_number, max_guests, price, description, image).then(r => {
             if (r) {
