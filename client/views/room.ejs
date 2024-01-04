@@ -14,12 +14,19 @@
         </header>
 
         <main>
-            <h2 class="ph-b">About this room</h2>
-            <p id="description"></p>
-
-            <h2 class="ph">Price</h2>
-            <p>This room is £<span id="price"></span> per night and can fit <span id="max_guests"></span>.</p>
-
+            <div class="lg:flex lg:space-x-4">
+                <div class="lg:flex-grow">
+                    <h2 class="ph-b">About this room</h2>
+                    <div class="grid gap-2">
+                        <p id="description"></p>
+                        <p>This room can fit <span id="max_guests"></span> guests.</p>
+                    </div>
+                </div>
+                <div class="bg-neutral-100">
+                    <h2 class="ph-t lg:pt-0 ph-b">Price</h2>
+                    <p>This room is £<span id="price"></span> per night.</p>
+                </div>
+            </div>
             <h2 class="ph">Book</h2>
 
             <div class="grid grid-cols-1 gap-2">
