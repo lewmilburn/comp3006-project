@@ -27,6 +27,7 @@ function createRoom() {
         image: image
     })
         .done(function () {
+            socketUpdateRoom();
             clearCreateRoomForm();
             alert('Room added to system.');
         })

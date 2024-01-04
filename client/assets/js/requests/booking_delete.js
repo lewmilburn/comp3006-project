@@ -7,6 +7,7 @@ function deleteBooking(id) {
         id: id
     })
         .done(function () {
+            socketUpdateBookings();
             alert('Booking cancelled.');
             window.location = '/account'
         })

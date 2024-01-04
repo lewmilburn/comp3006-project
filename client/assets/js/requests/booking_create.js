@@ -16,6 +16,7 @@ function createBooking() {
         end_date: end_date
     })
         .done(function () {
+            socketUpdateBookings();
             alert('Room booked from '+start_date+' to '+end_date);
             window.location = '/account'
         })

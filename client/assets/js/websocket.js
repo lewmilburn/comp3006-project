@@ -1,5 +1,5 @@
-$(function () {
-    let i = 0;
+
+    let ci = 0;
     const socket = io(SETTINGS.SOCKET_URL, {
         reconnectionDelay: 1000,
         reconnection: true,
@@ -11,7 +11,7 @@ $(function () {
     });
 
     socket.on("ping", function () {
-        i = 0;
+        ci = 0;
         websocketStatus('Connected');
         clientConnected();
     });
@@ -32,9 +32,9 @@ $(function () {
             clientDisconnectedMidRun();
         }
         console.log("[WS] Can't connect '"+err+"'");
-        i++;
-        websocketStatus("Can't connect, retrying (attempt "+(i)+"/10)...");
-        if (i === 9) {
+        ci++;
+        websocketStatus("Can't connect, retrying (attempt "+(ci)+"/10)...");
+        if (ci === 9) {
             clientOffline();
         }
     });
@@ -46,4 +46,11 @@ $(function () {
     $("#createBookingBtn").on( "click", function() {
         socket.emit("update-booking");
     });
-});
+
+    function socketUpdateRoom() {
+        socket.emit('update-room');
+    }
+
+    function socketUpdateBookings() {
+        socket.emit('update-room');
+    }

@@ -48,6 +48,7 @@ function closeManageRoom() {
 }
 
 function deleteRoom() {
+
     deleteRoomRequest($('#ur_room_number').val());
 
     closeManageRoom();

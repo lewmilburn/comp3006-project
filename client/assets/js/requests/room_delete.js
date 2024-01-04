@@ -9,6 +9,7 @@ function deleteRoomRequest(room_number) {
         data: { room_number: room_number },
         success: function() {
             alert('Room deleted.');
+            socketUpdateRoom();
         },
         error: function (xhr, status, error) {
             console.log('Request failed:', xhr, status, error);

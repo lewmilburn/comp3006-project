@@ -13,6 +13,7 @@ function updateBooking(id) {
         end_date: endDate
     })
         .done(function () {
+            socketUpdateBookings();
             alert('Room booked from '+startDate+' to '+endDate);
             window.location = '/account'
         })

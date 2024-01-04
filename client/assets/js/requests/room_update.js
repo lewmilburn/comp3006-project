@@ -32,6 +32,7 @@ function updateRoom() {
         image: image
     })
         .done(function () {
+            socketUpdateRoom();
             closeManageRoom();
             alert('Room updated.');
             reloadData();
