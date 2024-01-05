@@ -22,7 +22,7 @@
                         <p>This room can fit <span id="max_guests"></span> guests.</p>
                     </div>
                 </div>
-                <div class="bg-neutral-100">
+                <div class="lg:card-neutral-static lg:card-content">
                     <h2 class="ph-t lg:pt-0 ph-b">Price</h2>
                     <p>This room is £<span id="price"></span> per night.</p>
                 </div>
@@ -35,12 +35,12 @@
                     <input type="text" id="room_number">
                 </div>
                 <div class="grid gap-2">
-                <label for="start_date">Start date</label>
-                <input type="date" id="start_date">
+                    <label for="start_date">Start date</label>
+                    <input type="date" id="start_date">
                 </div>
                 <div class="grid gap-2">
-                <label for="end_date">End date</label>
-                <input type="date" id="end_date">
+                    <label for="end_date">End date</label>
+                    <input type="date" id="end_date">
                 </div>
                 <button class="btn-neutral col-span-2" onclick="createBooking();" id="createBookingBtn">Book</button>
             </div>
@@ -86,7 +86,9 @@
             function getBookingInfo() {
                 getRoomBookings(roomNumber)
                     .then(data => {
-                        let greenData = new Object({_id: '', user_id: '', roomNumber: '', start_date: '2024-01-01', end_date: '2024-12-30', color: 'green'});
+                        currentDate = new Date();
+                        let greenData = new Object({_id: '', user_id: '', roomNumber: '', start_date: currentDate.toISOString().split('T')[0], end_date: '2050-12-31', color: 'green'});
+
                         data.unshift(greenData);
                         for (let item in data) {
                             data[item] = data[item];

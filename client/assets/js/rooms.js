@@ -23,6 +23,6 @@ function requestAll() {
 function displayAll(rooms) {
     $("#roomList").empty();
     for (const room of rooms) {
-        $("#roomList").append("<a href='/room/"+room.room_number+"' class='card-neutral'><div class='card-image' style='background-image: url("+room.image+")'></div><div class='card-content'>"+room.type+" room on the floor "+room.floor+" for £"+room.price+"/night</div></a>")
+        $("#roomList").append("<a href='/room/"+room.room_number+"' class='card-neutral'><div class='card-image' style='background-image: url("+room.image+")'></div><div class='card-content'><h3>Room "+room.room_number+"</h3>"+room.type+" room on the floor "+room.floor+" for £"+room.price+"/night</div></a>")
     }
 }
