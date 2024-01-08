@@ -22,10 +22,10 @@ On macOS/Linux systems you can run up.sh, on Windows systems type the following 
 `docker-compose up -d`
 
 ## Server locations
-The [https://github.com/lewmilburn/hotel-app/blob/main/client/assets/js/settings.js](settings.js file) in the client folder should be changed to reflect the server's IP address/hostname. When running locally the default value of 'localhost' will work as intended. If devices other than the one hosting the server is being used to access the application, this will need to be changed.
+The [settings.js file](https://github.com/lewmilburn/hotel-app/blob/main/client/assets/js/settings.js) in the client folder should be changed to reflect the server's IP address/hostname. When running locally the default value of 'localhost' will work as intended. If devices other than the one hosting the server is being used to access the application, this will need to be changed.
 
 ## Database connection
-The [https://github.com/lewmilburn/hotel-app/blob/main/server/.env](.env file) in the server folder contains a database connection string, this can be changed if you wish.
+The [.env file](https://github.com/lewmilburn/hotel-app/blob/main/server/.env) in the server folder contains a database connection string, this can be changed if you wish.
 
 ## Ports
 ### Client
