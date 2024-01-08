@@ -21,6 +21,6 @@ function createBooking() {
             window.location = '/account'
         })
         .fail(function () {
-            alert('Unable to book room, please try again later.');
+            alert('There is already a booking on these dates, please select a different date or room.');
         });
 }
